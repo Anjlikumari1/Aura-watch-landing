@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>AURA — The Intelligent Timepiece</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.umd.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 
   <script>
     tailwind.config = {
@@ -20,34 +21,29 @@
             body: ['Outfit', 'sans-serif'],
           },
           colors: {
-            obsidian: '#0a0a0f',
-            onyx: '#111118',
-            carbon: '#1a1a24',
-            ember: '#c8a96e',
-            gold: '#e8c97e',
-            champagne: '#f0dfa8',
-            mist: '#8a8a9a',
-            fog: '#c4c4d4',
+            obsidian: '#07070d', onyx: '#0d0d15', carbon: '#14141e',
+            ember: '#c8a96e', gold: '#e8c97e', champagne: '#f0dfa8',
+            mist: '#8a8a9a', fog: '#c4c4d4',
           },
           animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'shimmer': 'shimmer 3s linear infinite',
+            'float': 'float 6.5s ease-in-out infinite',
+            'shimmer': 'shimmer 5s linear infinite',
             'pulse-slow': 'pulse 4s ease-in-out infinite',
-            'spin-slow': 'spin 20s linear infinite',
+            'spin-slow': 'spin 22s linear infinite',
             'fade-up': 'fadeUp 0.8s ease forwards',
           },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-              '33%': { transform: 'translateY(-18px) rotate(1deg)' },
-              '66%': { transform: 'translateY(-8px) rotate(-1deg)' },
+              '33%': { transform: 'translateY(-16px) rotate(1deg)' },
+              '66%': { transform: 'translateY(-7px) rotate(-0.8deg)' },
             },
             shimmer: {
-              '0%': { backgroundPosition: '-200% 0' },
-              '100%': { backgroundPosition: '200% 0' },
+              '0%': { backgroundPosition: '-250% 0' },
+              '100%': { backgroundPosition: '250% 0' },
             },
             fadeUp: {
-              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
               '100%': { opacity: '1', transform: 'translateY(0)' },
             }
           }
@@ -55,541 +51,16 @@
       }
     }
   </script>
-
-  <style>
-    /* ── DARK MODE (default) ── */
-    :root {
-      --obsidian: #0a0a0f;
-      --onyx: #111118;
-      --carbon: #1a1a24;
-      --ember: #c8a96e;
-      --gold: #e8c97e;
-      --champagne: #f0dfa8;
-      --mist: #8a8a9a;
-      --fog: #c4c4d4;
-      --bg-body: #0a0a0f;
-      --bg-section-alt: #111118;
-      --bg-section-deep: #1a1a24;
-      --text-body: #c4c4d4;
-      --glass-bg: rgba(255,255,255,0.03);
-      --glass-border: rgba(200,169,110,0.12);
-      --glass-card-bg: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-      --glass-card-border: rgba(200,169,110,0.15);
-      --glass-card-hover-bg: linear-gradient(135deg, rgba(200,169,110,0.08) 0%, rgba(255,255,255,0.02) 100%);
-      --glass-card-hover-border: rgba(200,169,110,0.4);
-      --nav-scrolled-bg: rgba(10,10,15,0.92);
-      --nav-scrolled-border: rgba(200,169,110,0.1);
-      --form-input-bg: rgba(255,255,255,0.03);
-      --form-input-color: #f0dfa8;
-      --orbit-ring-color: rgba(200,169,110,0.08);
-      --divider-color: rgba(200,169,110,0.3);
-      --scrollbar-track: #0a0a0f;
-      --stat-color: #f0dfa8;
-      --marquee-bg: #1a1a24;
-      --btn-outline-border: rgba(200,169,110,0.4);
-      --theme-transition: background 0.5s ease, color 0.5s ease, border-color 0.4s ease;
-    }
-
-    /* ── LIGHT MODE — pure white ── */
-    html.light {
-      --obsidian: #ffffff;
-      --onyx: #f8f8f8;
-      --carbon: #f0f0f0;
-      --ember: #b8933a;
-      --gold: #d4aa45;
-      --champagne: #2a2a2a;
-      --mist: #888888;
-      --fog: #111111;
-      --bg-body: #ffffff;
-      --bg-section-alt: #f8f8f8;
-      --bg-section-deep: #f0f0f0;
-      --text-body: #1a1a1a;
-      --glass-bg: rgba(0,0,0,0.02);
-      --glass-border: rgba(184,147,58,0.18);
-      --glass-card-bg: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,248,248,0.8) 100%);
-      --glass-card-border: rgba(184,147,58,0.18);
-      --glass-card-hover-bg: linear-gradient(135deg, rgba(184,147,58,0.07) 0%, rgba(255,255,255,0.95) 100%);
-      --glass-card-hover-border: rgba(184,147,58,0.45);
-      --nav-scrolled-bg: rgba(255,255,255,0.96);
-      --nav-scrolled-border: rgba(184,147,58,0.14);
-      --form-input-bg: rgba(255,255,255,0.9);
-      --form-input-color: #1a1a1a;
-      --orbit-ring-color: rgba(184,147,58,0.09);
-      --divider-color: rgba(184,147,58,0.3);
-      --scrollbar-track: #ffffff;
-      --stat-color: #111111;
-      --marquee-bg: #f0f0f0;
-      --btn-outline-border: rgba(184,147,58,0.4);
-      --theme-transition: background 0.5s ease, color 0.5s ease, border-color 0.4s ease;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg-body);
-      color: var(--text-body);
-      font-family: 'Outfit', sans-serif;
-      overflow-x: hidden;
-      transition: var(--theme-transition);
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-    ::-webkit-scrollbar-thumb { background: var(--ember); border-radius: 2px; }
-
-    /* Theme toggle button */
-    #theme-toggle {
-      width: 44px; height: 24px;
-      border-radius: 12px;
-      border: 1px solid var(--glass-card-border);
-      background: var(--glass-bg);
-      cursor: pointer;
-      position: relative;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
-    #theme-toggle:hover { border-color: var(--ember); }
-    #theme-knob {
-      position: absolute;
-      top: 3px; left: 3px;
-      width: 16px; height: 16px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--ember), var(--gold));
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    html.light #theme-knob { transform: translateX(20px); }
-    #theme-icon-dark, #theme-icon-light {
-      position: absolute;
-      top: 50%; right: 5px;
-      transform: translateY(-50%);
-      font-size: 10px;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    #theme-icon-dark { opacity: 1; }
-    #theme-icon-light { right: auto; left: 5px; opacity: 0; }
-    html.light #theme-icon-dark { opacity: 0; }
-    html.light #theme-icon-light { opacity: 1; }
-
-    /* Grain overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.4;
-    }
-
-    .shimmer-text {
-      background: linear-gradient(90deg, var(--ember) 0%, var(--champagne) 40%, var(--ember) 60%, var(--gold) 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: shimmer 4s linear infinite;
-    }
-
-    .glass {
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--glass-border);
-      transition: var(--theme-transition);
-    }
-
-    .glass-card {
-      background: var(--glass-card-bg);
-      backdrop-filter: blur(24px);
-      border: 1px solid var(--glass-card-border);
-      transition: all 0.4s ease, background 0.5s ease, border-color 0.4s ease;
-    }
-
-    .glass-card:hover {
-      border-color: var(--glass-card-hover-border);
-      background: var(--glass-card-hover-bg);
-      transform: translateY(-4px);
-      box-shadow: 0 24px 60px rgba(200,169,110,0.1);
-    }
-
-    .glow-ember {
-      box-shadow: 0 0 40px rgba(200,169,110,0.2), 0 0 80px rgba(200,169,110,0.08);
-    }
-
-    .watch-glow {
-      filter: drop-shadow(0 0 30px rgba(200,169,110,0.35)) drop-shadow(0 0 80px rgba(200,169,110,0.12));
-    }
-
-    .divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--divider-color), transparent);
-    }
-
-    .nav-link {
-      position: relative;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--mist);
-      transition: color 0.3s ease;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--ember);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover { color: var(--fog); }
-    .nav-link:hover::after { width: 100%; }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--ember), var(--gold));
-      color: var(--obsidian);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-weight: 500;
-      padding: 0.85rem 2.2rem;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, var(--champagne), var(--ember));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .btn-primary:hover::before { opacity: 1; }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 36px rgba(200,169,110,0.35); }
-    .btn-primary span { position: relative; z-index: 1; }
-
-    .btn-outline {
-      border: 1px solid var(--btn-outline-border);
-      color: var(--ember);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.85rem 2.2rem;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-    .btn-outline:hover {
-      background: rgba(200,169,110,0.08);
-      border-color: var(--ember);
-      transform: translateY(-1px);
-    }
-
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--ember);
-    }
-
-    /* Watch SVG animation */
-    .watch-face { animation: float 6s ease-in-out infinite; }
-
-    /* Feature icon ring */
-    .icon-ring {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      border: 1px solid rgba(200,169,110,0.25);
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(200,169,110,0.06);
-      transition: all 0.3s ease;
-    }
-    .glass-card:hover .icon-ring {
-      border-color: rgba(200,169,110,0.6);
-      background: rgba(200,169,110,0.1);
-    }
-
-    /* Scroll reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Stagger children */
-    .stagger-children .reveal:nth-child(1) { transition-delay: 0s; }
-    .stagger-children .reveal:nth-child(2) { transition-delay: 0.1s; }
-    .stagger-children .reveal:nth-child(3) { transition-delay: 0.2s; }
-    .stagger-children .reveal:nth-child(4) { transition-delay: 0.3s; }
-    .stagger-children .reveal:nth-child(5) { transition-delay: 0.4s; }
-    .stagger-children .reveal:nth-child(6) { transition-delay: 0.5s; }
-
-    /* Team card hover */
-    .team-card { transition: all 0.4s ease; }
-    .team-card:hover { transform: translateY(-6px); }
-    .team-card .overlay {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .team-card:hover .overlay { opacity: 1; }
-
-    /* Input styles */
-    .form-input {
-      background: var(--form-input-bg);
-      border: 1px solid var(--glass-card-border);
-      color: var(--form-input-color);
-      font-family: 'Outfit', sans-serif;
-      transition: all 0.3s ease;
-      border-radius: 2px;
-      outline: none;
-    }
-    .form-input::placeholder { color: var(--mist); }
-    .form-input:focus {
-      border-color: rgba(200,169,110,0.5);
-      background: rgba(200,169,110,0.04);
-      box-shadow: 0 0 0 3px rgba(200,169,110,0.06);
-    }
-
-    /* Nav blur on scroll */
-    #navbar { transition: all 0.4s ease; }
-    #navbar.scrolled {
-      background: var(--nav-scrolled-bg);
-      backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--nav-scrolled-border);
-    }
-
-    /* Mobile menu */
-    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-    #mobile-menu.open { max-height: 400px; }
-
-    /* Chatbot */
-    #chatbot-widget {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      z-index: 10000;
-    }
-
-    #chat-window {
-      width: 340px;
-      height: 460px;
-      border-radius: 12px;
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 40px rgba(200,169,110,0.1);
-      animation: fadeUp 0.3s ease forwards;
-    }
-    #chat-window.open { display: flex; }
-
-    #chat-fab {
-      width: 58px; height: 58px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--ember), var(--gold));
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 8px 32px rgba(200,169,110,0.4);
-      transition: all 0.3s ease;
-      margin-left: auto;
-      margin-top: 12px;
-    }
-    #chat-fab:hover { transform: scale(1.08); box-shadow: 0 12px 40px rgba(200,169,110,0.55); }
-
-    .chat-msg {
-      max-width: 82%;
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-size: 0.82rem;
-      line-height: 1.5;
-      animation: fadeUp 0.3s ease forwards;
-    }
-    .chat-msg.user {
-      background: linear-gradient(135deg, var(--ember), var(--gold));
-      color: var(--obsidian);
-      margin-left: auto;
-      border-bottom-right-radius: 3px;
-    }
-    .chat-msg.bot {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(200,169,110,0.15);
-      color: var(--fog);
-      border-bottom-left-radius: 3px;
-    }
-
-    .typing-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--mist);
-      animation: typing 1.2s ease-in-out infinite;
-    }
-    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes typing {
-      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
-      30% { opacity: 1; transform: translateY(-4px); }
-    }
-
-    /* Radial gradient backgrounds */
-    .radial-ember {
-      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(200,169,110,0.08) 0%, transparent 70%);
-    }
-
-    /* Stats counter */
-    .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--stat-color);
-      line-height: 1;
-    }
-
-    /* Orbit ring decoration */
-    .orbit-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid var(--orbit-ring-color);
-    }
-  
-    /* ── Light mode section overrides — white theme ── */
-    html.light body { background: #ffffff !important; color: #1a1a1a !important; }
-
-    html.light section,
-    html.light footer { background: transparent !important; }
-
-    html.light section > .absolute.inset-0[class*="bg-gradient"],
-    html.light footer > .absolute.inset-0[class*="bg-"] { opacity: 0.06 !important; }
-
-    html.light .radial-ember {
-      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(184,147,58,0.05) 0%, transparent 70%);
-    }
-
-    /* text color overrides */
-    html.light .text-champagne { color: #1a1a1a !important; }
-    html.light .text-mist      { color: #777777 !important; }
-    html.light .text-ember     { color: #b8933a !important; }
-    html.light .text-fog       { color: #111111 !important; }
-
-    /* background overrides */
-    html.light .bg-obsidian { background: #ffffff !important; }
-    html.light .bg-onyx     { background: #f8f8f8 !important; }
-    html.light .bg-carbon   { background: #f0f0f0 !important; }
-
-    /* borders */
-    html.light .border-ember\/10 { border-color: rgba(184,147,58,0.12) !important; }
-    html.light .border-ember\/20 { border-color: rgba(184,147,58,0.2)  !important; }
-
-    html.light #navbar.scrolled {
-      background: rgba(255,255,255,0.97) !important;
-      border-bottom: 1px solid rgba(184,147,58,0.12) !important;
-      box-shadow: 0 1px 20px rgba(0,0,0,0.06);
-    }
-
-    /* sections explicit */
-    html.light #hero    { background: #ffffff !important; }
-    html.light #product { background: #f8f8f8 !important; }
-    html.light #features{ background: #ffffff !important; }
-    html.light #team    { background: #f0f0f0 !important; }
-    html.light #contact { background: #f8f8f8 !important; }
-    html.light footer   { background: #ffffff !important; border-top: 1px solid rgba(184,147,58,0.1) !important; }
-
-    /* cards */
-    html.light .glass-card {
-      background: #ffffff !important;
-      border-color: rgba(184,147,58,0.15) !important;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-    }
-    html.light .glass-card:hover {
-      background: #fffdf7 !important;
-      border-color: rgba(184,147,58,0.4) !important;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
-    }
-    html.light .glass {
-      background: rgba(255,255,255,0.8) !important;
-      border-color: rgba(184,147,58,0.15) !important;
-    }
-
-    /* watch glow softer */
-    html.light .watch-glow {
-      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.1)) drop-shadow(0 0 40px rgba(184,147,58,0.12));
-    }
-    html.light .orbit-ring { border-color: rgba(184,147,58,0.08) !important; }
-    html.light .glow-ember { box-shadow: 0 0 30px rgba(184,147,58,0.1), 0 2px 30px rgba(0,0,0,0.06); }
-
-    /* floating badges */
-    html.light [class*="absolute"][class*="glass"] {
-      background: rgba(255,255,255,0.9) !important;
-      border-color: rgba(184,147,58,0.2) !important;
-    }
-
-    /* form inputs */
-    html.light .form-input {
-      background: #ffffff !important;
-      border-color: rgba(184,147,58,0.2) !important;
-      color: #1a1a1a !important;
-    }
-    html.light .form-input::placeholder { color: #999999 !important; }
-    html.light select.form-input option { background: #ffffff; color: #1a1a1a; }
-
-    /* section labels */
-    html.light .section-label { color: #b8933a !important; }
-
-    /* divider */
-    html.light .divider { background: linear-gradient(90deg, transparent, rgba(184,147,58,0.25), transparent) !important; }
-
-    /* chatbot */
-    html.light #chat-window { box-shadow: 0 16px 60px rgba(0,0,0,0.12); }
-    html.light #chat-messages { background: #f8f8f8 !important; }
-    html.light #chat-window .bg-obsidian\/80 { background: rgba(255,255,255,0.98) !important; }
-    html.light .chat-msg.bot {
-      background: #f0f0f0;
-      border-color: rgba(184,147,58,0.15);
-      color: #1a1a1a;
-    }
-
-    /* nav hamburger bars */
-    html.light #bar1, html.light #bar2, html.light #bar3 { background-color: #b8933a !important; }
-
-    /* stat numbers */
-    html.light .stat-number { color: #111111 !important; }
-
-    /* team card overlays — lighten them in light mode */
-    html.light .team-card .overlay { background: linear-gradient(to top, rgba(184,147,58,0.12), transparent) !important; }
-
-    /* shimmer — slightly warmer on white */
-    html.light .shimmer-text {
-      background: linear-gradient(90deg, #b8933a 0%, #2a2a2a 40%, #b8933a 60%, #d4aa45 100%) !important;
-      background-size: 200% auto !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      animation: shimmer 4s linear infinite !important;
-    }
-
-    /* marquee strip */
-    html.light .marquee-strip-text-ember { color: #b8933a !important; }
-
-  </style>
 </head>
 <body class="font-body">
 
 <!-- ========================== NAVBAR ============================== -->
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-12 py-5">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-12 py-4 sm:py-5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-3 group">
-      <div class="w-8 h-8 relative">
+    <a href="#" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0">
+      <div class="w-7 h-7 sm:w-8 sm:h-8 relative">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="16" cy="16" r="14" stroke="url(#logoGrad)" stroke-width="1.5"/>
           <path d="M16 6 L16 10 M16 22 L16 26 M6 16 L10 16 M22 16 L26 16" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round"/>
@@ -602,20 +73,20 @@
           </defs>
         </svg>
       </div>
-      <span class="font-display text-2xl font-light tracking-widest text-champagne">AURA</span>
+      <span class="font-display text-xl sm:text-2xl font-light tracking-widest text-champagne">AURA</span>
     </a>
 
     <!-- Desktop Links -->
-    <div class="hidden md:flex items-center gap-10">
-      <a href="#product" class="nav-link">Product</a>
+    <div class="hidden md:flex items-center gap-6 lg:gap-10">
+      <a href="#product"  class="nav-link">Product</a>
       <a href="#features" class="nav-link">Features</a>
-      <a href="#team" class="nav-link">Team</a>
-      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#team"     class="nav-link">Team</a>
+      <a href="#contact"  class="nav-link">Contact</a>
     </div>
 
-    <!-- CTA -->
-    <div class="hidden md:flex items-center gap-4">
-      <span class="font-mono text-xs text-mist tracking-widest">$299</span>
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex items-center gap-3 lg:gap-4 flex-shrink-0">
+      <span class="font-mono text-xs text-mist tracking-widest hidden lg:block">$299</span>
       <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
         <div id="theme-knob"></div>
         <span id="theme-icon-dark">🌙</span>
@@ -624,30 +95,30 @@
       <a href="#contact" class="btn-primary"><span>Order Now</span></a>
     </div>
 
-    <!-- Mobile Toggle -->
-    <button id="menu-toggle" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
-      <span class="w-6 h-px bg-ember block transition-all" id="bar1"></span>
-      <span class="w-4 h-px bg-ember block transition-all" id="bar2"></span>
-      <span class="w-6 h-px bg-ember block transition-all" id="bar3"></span>
-    </button>
+    <!-- Mobile right cluster -->
+    <div class="flex items-center gap-3 md:hidden">
+      <button id="theme-toggle-mob" aria-label="Toggle light/dark mode"
+        style="width:40px;height:22px;border-radius:11px;border:1px solid var(--lg-card-border);background:var(--lg-bg);cursor:pointer;position:relative;flex-shrink:0;backdrop-filter:blur(12px);"
+        onclick="toggleTheme()">
+        <div id="theme-knob-mobile"
+          style="position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--ember),var(--gold));transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 2px 6px rgba(200,169,110,0.5);"></div>
+      </button>
+      <button id="menu-toggle" class="flex flex-col gap-1.5 p-2" aria-label="Menu">
+        <span class="w-6 h-px bg-ember block transition-all duration-300" id="bar1"></span>
+        <span class="w-4 h-px bg-ember block transition-all duration-300" id="bar2"></span>
+        <span class="w-6 h-px bg-ember block transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="md:hidden glass mt-4 rounded">
-    <div class="px-6 py-6 flex flex-col gap-5">
-      <a href="#product" class="nav-link" onclick="closeMobileMenu()">Product</a>
-      <a href="#features" class="nav-link" onclick="closeMobileMenu()">Features</a>
-      <a href="#team" class="nav-link" onclick="closeMobileMenu()">Team</a>
-      <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
-      <div class="flex items-center justify-between">
-        <span class="font-mono text-xs text-mist tracking-widest">Theme</span>
-        <button id="theme-toggle-mobile" aria-label="Toggle light/dark mode"
-          style="width:44px;height:24px;border-radius:12px;border:1px solid var(--glass-card-border);background:var(--glass-bg);cursor:pointer;position:relative;transition:all 0.3s ease;"
-          onclick="toggleTheme()">
-          <div id="theme-knob-mobile"
-            style="position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,var(--ember),var(--gold));transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);"></div>
-        </button>
-      </div>
+  <!-- Mobile Menu — liquid glass panel -->
+  <div id="mobile-menu" class="md:hidden mt-3 mx-0">
+    <div class="glass rounded-xl px-5 py-5 flex flex-col gap-4"
+         style="box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 16px 48px rgba(0,0,0,0.5);">
+      <a href="#product"  class="nav-link py-1" onclick="closeMobileMenu()">Product</a>
+      <a href="#features" class="nav-link py-1" onclick="closeMobileMenu()">Features</a>
+      <a href="#team"     class="nav-link py-1" onclick="closeMobileMenu()">Team</a>
+      <a href="#contact"  class="nav-link py-1" onclick="closeMobileMenu()">Contact</a>
       <div class="divider"></div>
       <a href="#contact" class="btn-primary text-center" onclick="closeMobileMenu()"><span>Order Now — $299</span></a>
     </div>
@@ -657,162 +128,124 @@
 
 <!-- ============================ HERO ============================== -->
 <section id="hero" class="min-h-screen relative flex items-center justify-center overflow-hidden">
-  <!-- Background layers -->
   <div class="absolute inset-0 bg-gradient-to-b from-obsidian via-onyx to-obsidian"></div>
   <div class="radial-ember absolute inset-0"></div>
 
-  <!-- Orbit rings -->
-  <div class="orbit-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width:600px;height:600px;"></div>
-  <div class="orbit-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="width:900px;height:900px;opacity:0.5;"></div>
-  <div class="orbit-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin-slow" style="width:750px;height:750px;border-style:dashed;border-color:rgba(200,169,110,0.05);"></div>
+  <!-- Orbit rings — hidden on small screens via CSS -->
+  <div class="orbit-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden sm:block" style="width:min(600px,90vw);height:min(600px,90vw);"></div>
+  <div class="orbit-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:block" style="width:900px;height:900px;opacity:0.4;"></div>
+  <div class="orbit-ring absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-spin-slow hidden lg:block" style="width:750px;height:750px;border-style:dashed;border-color:rgba(200,169,110,0.04);"></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-16">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center">
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-24 sm:pt-28 pb-12 sm:pb-16">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center">
 
       <!-- Left Content -->
       <div class="text-left">
-        <div class="section-label mb-6 reveal" data-delay="0">— Intelligent Wearable 2026</div>
+        <div class="section-label mb-5 reveal">— Intelligent Wearable 2026</div>
 
-        <h1 class="font-display font-light leading-none mb-6 reveal" data-delay="100">
-          <span class="block text-6xl md:text-7xl lg:text-8xl shimmer-text">Time,</span>
-          <span class="block text-6xl md:text-7xl lg:text-8xl text-champagne italic">Perfected.</span>
+        <h1 class="font-display font-light leading-none mb-6 reveal">
+          <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl shimmer-text">Time,</span>
+          <span class="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-champagne italic">Perfected.</span>
         </h1>
 
-        <p class="text-mist font-light leading-relaxed text-lg mb-10 max-w-md reveal" data-delay="200">
+        <p class="text-mist font-light leading-relaxed text-base sm:text-lg mb-8 sm:mb-10 max-w-md reveal">
           AURA fuses Swiss-grade precision with adaptive AI — a timepiece that learns your rhythm, guards your health, and never asks you to charge it twice a week.
         </p>
 
-        <div class="flex flex-wrap gap-4 mb-16 reveal" data-delay="300">
-          <a href="#product" class="btn-primary"><span>Explore Watch</span></a>
+        <div class="flex flex-wrap gap-3 sm:gap-4 mb-10 sm:mb-14 reveal">
+          <a href="#product"  class="btn-primary"><span>Explore Watch</span></a>
           <a href="#features" class="btn-outline">See Features</a>
         </div>
 
         <!-- Stats -->
-        <div class="flex gap-10 reveal" data-delay="400">
+        <div class="flex flex-wrap gap-6 sm:gap-10 reveal">
           <div>
-            <div class="stat-number">18<span class="text-ember text-3xl">d</span></div>
+            <div class="stat-number">18<span class="text-ember" style="font-size:clamp(1.2rem,3vw,2rem)">d</span></div>
             <div class="font-mono text-xs text-mist tracking-widest mt-1">Battery Life</div>
           </div>
-          <div class="w-px bg-ember/20"></div>
+          <div class="w-px bg-ember/20 self-stretch"></div>
           <div>
-            <div class="stat-number">47<span class="text-ember text-3xl">+</span></div>
+            <div class="stat-number">47<span class="text-ember" style="font-size:clamp(1.2rem,3vw,2rem)">+</span></div>
             <div class="font-mono text-xs text-mist tracking-widest mt-1">Health Sensors</div>
           </div>
-          <div class="w-px bg-ember/20"></div>
+          <div class="w-px bg-ember/20 self-stretch"></div>
           <div>
-            <div class="stat-number">2<span class="text-ember text-3xl">mm</span></div>
+            <div class="stat-number">2<span class="text-ember" style="font-size:clamp(1.2rem,3vw,2rem)">mm</span></div>
             <div class="font-mono text-xs text-mist tracking-widest mt-1">Ultra Slim</div>
           </div>
         </div>
       </div>
 
       <!-- Right — Watch Illustration -->
-      <div class="flex justify-center lg:justify-end relative">
+      <div class="flex justify-center lg:justify-end relative mt-6 lg:mt-0">
         <div class="watch-face relative">
-          <!-- Glow blob -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-ember/10 blur-3xl"></div>
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 sm:w-64 h-48 sm:h-64 rounded-full bg-ember/10 blur-3xl"></div>
 
-          <!-- Watch SVG -->
-          <svg width="340" height="480" viewBox="0 0 340 480" fill="none" xmlns="http://www.w3.org/2000/svg" class="watch-glow relative z-10">
-            <!-- Watch band top -->
+          <!-- Responsive watch SVG -->
+          <svg class="watch-glow relative z-10 w-[240px] h-[340px] sm:w-[300px] sm:h-[420px] lg:w-[340px] lg:h-[480px]"
+               viewBox="0 0 340 480" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="140" y="20" width="60" height="80" rx="12" fill="url(#bandGrad)" opacity="0.9"/>
             <rect x="148" y="25" width="44" height="70" rx="8" fill="rgba(0,0,0,0.3)"/>
-            <!-- Band stitching -->
             <line x1="155" y1="30" x2="155" y2="90" stroke="rgba(200,169,110,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
             <line x1="185" y1="30" x2="185" y2="90" stroke="rgba(200,169,110,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
-
-            <!-- Watch body -->
             <rect x="80" y="95" width="180" height="230" rx="36" fill="url(#bodyGrad)"/>
             <rect x="82" y="97" width="176" height="226" rx="35" fill="url(#bodyGrad2)"/>
-
-            <!-- Screen bezel -->
-            <rect x="92" y="107" width="156" height="206" rx="28" fill="#0a0a0f"/>
-
-            <!-- Screen glow -->
+            <rect x="92" y="107" width="156" height="206" rx="28" fill="#07070d"/>
             <rect x="94" y="109" width="152" height="202" rx="27" fill="url(#screenGrad)"/>
-
-            <!-- Watch face content -->
-            <!-- Time display -->
             <text x="170" y="185" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="44" font-weight="300" fill="#f0dfa8">10:14</text>
             <text x="170" y="205" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="#8a8a9a" letter-spacing="3">MON 02 JUN</text>
-
-            <!-- Heart rate arc -->
             <path d="M 115 235 A 55 55 0 0 1 225 235" stroke="rgba(200,169,110,0.15)" stroke-width="6" stroke-linecap="round" fill="none"/>
             <path d="M 115 235 A 55 55 0 0 1 185 235" stroke="url(#arcGrad)" stroke-width="6" stroke-linecap="round" fill="none"/>
-
-            <!-- Heart icon -->
             <path d="M 164 228 C 164 225 167 222 170 225 C 173 222 176 225 176 228 C 176 232 170 237 170 237 C 170 237 164 232 164 228Z" fill="#c8a96e"/>
-
-            <!-- BPM text -->
             <text x="170" y="252" text-anchor="middle" font-family="DM Mono, monospace" font-size="18" fill="#e8c97e" font-weight="500">72</text>
             <text x="170" y="263" text-anchor="middle" font-family="DM Mono, monospace" font-size="7" fill="#8a8a9a" letter-spacing="2">BPM</text>
-
-            <!-- Bottom stats row -->
             <rect x="105" y="275" width="50" height="28" rx="6" fill="rgba(200,169,110,0.06)" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
             <text x="130" y="285" text-anchor="middle" font-family="DM Mono, monospace" font-size="7" fill="#c8a96e">STEPS</text>
             <text x="130" y="297" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="#f0dfa8">8,240</text>
-
             <rect x="185" y="275" width="50" height="28" rx="6" fill="rgba(200,169,110,0.06)" stroke="rgba(200,169,110,0.12)" stroke-width="1"/>
             <text x="210" y="285" text-anchor="middle" font-family="DM Mono, monospace" font-size="7" fill="#c8a96e">SLEEP</text>
             <text x="210" y="297" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="#f0dfa8">7h 22m</text>
-
-            <!-- Crown button -->
             <rect x="258" y="168" width="10" height="36" rx="5" fill="url(#crownGrad)"/>
-
-            <!-- Band bottom -->
             <rect x="140" y="323" width="60" height="80" rx="12" fill="url(#bandGrad)" opacity="0.9"/>
             <rect x="148" y="328" width="44" height="70" rx="8" fill="rgba(0,0,0,0.3)"/>
             <line x1="155" y1="333" x2="155" y2="393" stroke="rgba(200,169,110,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
             <line x1="185" y1="333" x2="185" y2="393" stroke="rgba(200,169,110,0.3)" stroke-width="1" stroke-dasharray="4 3"/>
-
-            <!-- Buckle holes -->
             <circle cx="170" cy="415" r="3" fill="rgba(200,169,110,0.4)"/>
             <circle cx="170" cy="428" r="3" fill="rgba(200,169,110,0.25)"/>
             <circle cx="170" cy="441" r="3" fill="rgba(200,169,110,0.15)"/>
-
-            <!-- Screen scan line -->
             <rect x="94" y="109" width="152" height="202" rx="27" fill="url(#scanGrad)" opacity="0.4"/>
-
             <defs>
               <linearGradient id="bandGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#2a2a35"/>
-                <stop offset="100%" stop-color="#1a1a22"/>
+                <stop offset="0%" stop-color="#2a2a35"/><stop offset="100%" stop-color="#1a1a22"/>
               </linearGradient>
               <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#2e2e3e"/>
-                <stop offset="100%" stop-color="#1a1a28"/>
+                <stop offset="0%" stop-color="#2e2e3e"/><stop offset="100%" stop-color="#1a1a28"/>
               </linearGradient>
               <linearGradient id="bodyGrad2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#38384a"/>
-                <stop offset="30%" stop-color="#252535"/>
-                <stop offset="100%" stop-color="#1a1a28"/>
+                <stop offset="0%" stop-color="#38384a"/><stop offset="30%" stop-color="#252535"/><stop offset="100%" stop-color="#1a1a28"/>
               </linearGradient>
               <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0e0e18"/>
-                <stop offset="100%" stop-color="#060610"/>
+                <stop offset="0%" stop-color="#0e0e18"/><stop offset="100%" stop-color="#06060f"/>
               </linearGradient>
               <linearGradient id="arcGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#c8a96e"/>
-                <stop offset="100%" stop-color="#e8c97e"/>
+                <stop offset="0%" stop-color="#c8a96e"/><stop offset="100%" stop-color="#e8c97e"/>
               </linearGradient>
               <linearGradient id="crownGrad" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#3a3a4a"/>
-                <stop offset="50%" stop-color="#c8a96e"/>
-                <stop offset="100%" stop-color="#3a3a4a"/>
+                <stop offset="0%" stop-color="#3a3a4a"/><stop offset="50%" stop-color="#c8a96e"/><stop offset="100%" stop-color="#3a3a4a"/>
               </linearGradient>
               <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="rgba(200,169,110,0.05)"/>
-                <stop offset="50%" stop-color="transparent"/>
-                <stop offset="100%" stop-color="transparent"/>
+                <stop offset="0%" stop-color="rgba(200,169,110,0.05)"/><stop offset="50%" stop-color="transparent"/><stop offset="100%" stop-color="transparent"/>
               </linearGradient>
             </defs>
           </svg>
 
-          <!-- Floating badges -->
-          <div class="absolute top-8 -left-10 glass px-4 py-2.5 rounded-lg text-xs font-mono text-ember border border-ember/20 animate-pulse-slow hidden lg:block">
+          <!-- Floating badges — shown only on lg+ via CSS -->
+          <div class="absolute top-8 -left-12 glass px-4 py-2.5 rounded-xl text-xs font-mono text-ember border-ember/20 animate-pulse-slow hidden lg:block"
+               style="backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.08),0 8px 24px rgba(0,0,0,0.4);">
             ◆ AI Adaptive Mode
           </div>
-          <div class="absolute bottom-28 -right-8 glass px-4 py-2.5 rounded-lg text-xs font-mono text-champagne border border-ember/20 hidden lg:block" style="animation: float 5s ease-in-out infinite 1s;">
+          <div class="absolute bottom-28 -right-10 glass px-4 py-2.5 rounded-xl text-xs font-mono text-champagne border-ember/20 hidden lg:block"
+               style="animation:float 5s ease-in-out infinite 1s;backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.08),0 8px 24px rgba(0,0,0,0.4);">
             ✦ 18-Day Battery
           </div>
         </div>
@@ -821,138 +254,86 @@
   </div>
 
   <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-35">
     <span class="font-mono text-xs text-mist tracking-widest">scroll</span>
-    <div class="w-px h-12 bg-gradient-to-b from-ember to-transparent"></div>
+    <div class="w-px h-10 bg-gradient-to-b from-ember to-transparent"></div>
   </div>
 </section>
 
 
-<!-- ═══════════════════════════ PRODUCT SECTION ═══════════════════════════ -->
-<section id="product" class="py-28 relative overflow-hidden">
+<!-- ═══════════════════════════ PRODUCT ═══════════════════════════ -->
+<section id="product" class="relative overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-b from-obsidian to-onyx"></div>
-  <div class="radial-ember absolute inset-0 opacity-60"></div>
+  <div class="radial-ember absolute inset-0 opacity-50"></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="text-center mb-20 reveal">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="text-center mb-12 sm:mb-16 lg:mb-20 reveal">
       <div class="section-label mb-4">— The Watch</div>
-      <h2 class="font-display text-5xl md:text-6xl lg:text-7xl font-light text-champagne mb-6">
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-champagne mb-6">
         Crafted for the<br/><em class="shimmer-text">extraordinary.</em>
       </h2>
-      <p class="text-mist max-w-xl mx-auto font-light leading-relaxed">
+      <p class="text-mist max-w-lg mx-auto font-light leading-relaxed text-sm sm:text-base">
         Three variants. One philosophy: technology that disappears into your life, leaving only elegance.
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 stagger-children">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 stagger-children">
 
-      <!-- Product 1 -->
-      <div class="glass-card rounded-2xl p-8 text-center group reveal">
-        <div class="mb-6 flex justify-center">
-          <svg width="120" height="160" viewBox="0 0 120 160" fill="none">
-            <rect x="42" y="4" width="36" height="28" rx="6" fill="#1e1e2a"/>
-            <rect x="28" y="30" width="64" height="88" rx="16" fill="url(#p1body)"/>
-            <rect x="34" y="36" width="52" height="76" rx="12" fill="#070710"/>
-            <rect x="35" y="37" width="50" height="74" rx="11" fill="url(#p1screen)"/>
-            <text x="60" y="72" text-anchor="middle" font-size="16" font-family="Cormorant Garamond" fill="#f0dfa8" font-weight="300">10:14</text>
-            <circle cx="60" cy="92" r="10" fill="none" stroke="url(#p1arc)" stroke-width="2"/>
-            <path d="M55 92 L58 95 L65 88" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round"/>
-            <rect x="42" y="116" width="36" height="36" rx="6" fill="#1e1e2a"/>
-            <rect x="90" y="60" width="6" height="16" rx="3" fill="#3a3a4a"/>
-            <defs>
-              <linearGradient id="p1body" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#2a2a3a"/>
-                <stop offset="100%" stop-color="#18181f"/>
-              </linearGradient>
-              <linearGradient id="p1screen" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0d0d1a"/>
-                <stop offset="100%" stop-color="#050508"/>
-              </linearGradient>
-              <linearGradient id="p1arc" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#c8a96e"/>
-                <stop offset="100%" stop-color="#e8c97e"/>
-              </linearGradient>
-            </defs>
-          </svg>
+      <!-- Classic Series -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 text-center group reveal">
+        <!-- Classic Series Photo -->
+        <div class="product-img-wrap mb-5 sm:mb-6">
+          <img
+            src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=600&q=85&auto=format&fit=crop&crop=center"
+            alt="AURA Classic Series — matte black titanium smartwatch"
+            loading="lazy" width="600" height="480"
+          />
+          <div class="product-img-overlay"></div>
         </div>
         <div class="section-label mb-2">Obsidian</div>
-        <h3 class="font-display text-3xl font-light text-champagne mb-3">Classic Series</h3>
-        <p class="text-mist text-sm font-light leading-relaxed mb-6">Matte-black titanium case. Sapphire crystal glass. The watch for those who let results speak.</p>
-        <div class="font-mono text-2xl text-ember mb-6">$299</div>
-        <a href="#contact" class="btn-outline w-full block text-center">Choose Classic</a>
+        <h3 class="font-display text-2xl sm:text-3xl font-light text-champagne mb-3">Classic Series</h3>
+        <p class="text-mist text-sm font-light leading-relaxed mb-5 sm:mb-6">Matte-black titanium case. Sapphire crystal glass. The watch for those who let results speak.</p>
+        <div class="font-mono text-xl sm:text-2xl text-ember mb-5 sm:mb-6">$299</div>
+        <a href="#contact" class="btn-outline block w-full text-center">Choose Classic</a>
       </div>
 
-      <!-- Product 2 — Featured -->
-      <div class="relative glass-card rounded-2xl p-8 text-center group reveal glow-ember border-ember/30">
-        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-ember to-gold text-obsidian font-mono text-xs px-4 py-1 rounded-full tracking-widest">BESTSELLER</div>
-        <div class="mb-6 flex justify-center">
-          <svg width="120" height="160" viewBox="0 0 120 160" fill="none">
-            <rect x="42" y="4" width="36" height="28" rx="6" fill="#2a2218"/>
-            <rect x="28" y="30" width="64" height="88" rx="16" fill="url(#p2body)"/>
-            <rect x="34" y="36" width="52" height="76" rx="12" fill="#070710"/>
-            <rect x="35" y="37" width="50" height="74" rx="11" fill="url(#p2screen)"/>
-            <text x="60" y="72" text-anchor="middle" font-size="16" font-family="Cormorant Garamond" fill="#f0dfa8" font-weight="300">10:14</text>
-            <!-- Gold ring accent -->
-            <circle cx="60" cy="74" r="28" fill="none" stroke="rgba(200,169,110,0.2)" stroke-width="1"/>
-            <rect x="42" y="116" width="36" height="36" rx="6" fill="#2a2218"/>
-            <rect x="90" y="60" width="6" height="16" rx="3" fill="url(#p2crown)"/>
-            <defs>
-              <linearGradient id="p2body" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#3a3020"/>
-                <stop offset="100%" stop-color="#1e1810"/>
-              </linearGradient>
-              <linearGradient id="p2screen" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0d0d1a"/>
-                <stop offset="100%" stop-color="#050508"/>
-              </linearGradient>
-              <linearGradient id="p2crown" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#c8a96e"/>
-                <stop offset="100%" stop-color="#e8c97e"/>
-              </linearGradient>
-            </defs>
-          </svg>
+      <!-- Prestige Series — Featured -->
+      <div class="relative glass-card rounded-2xl p-6 sm:p-8 text-center group reveal glow-ember"
+           style="border-color:rgba(200,169,110,0.3);">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-ember to-gold text-obsidian font-mono text-xs px-4 py-1 rounded-full tracking-widest whitespace-nowrap"
+             style="box-shadow:0 4px 14px rgba(200,169,110,0.35);">BESTSELLER</div>
+        <!-- Prestige Series Photo -->
+        <div class="product-img-wrap mb-5 sm:mb-6">
+          <img
+            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=85&auto=format&fit=crop&crop=center"
+            alt="AURA Prestige Series — 18k gold-tone ceramic smartwatch"
+            loading="lazy" width="600" height="480"
+          />
+          <div class="product-img-overlay"></div>
         </div>
         <div class="section-label mb-2">Ember Gold</div>
-        <h3 class="font-display text-3xl font-light text-champagne mb-3">Prestige Series</h3>
-        <p class="text-mist text-sm font-light leading-relaxed mb-6">18k gold-tone ceramic case. Genuine leather strap. For the moments that define you.</p>
-        <div class="font-mono text-2xl text-ember mb-6">$499</div>
-        <a href="#contact" class="btn-primary w-full block text-center"><span>Choose Prestige</span></a>
+        <h3 class="font-display text-2xl sm:text-3xl font-light text-champagne mb-3">Prestige Series</h3>
+        <p class="text-mist text-sm font-light leading-relaxed mb-5 sm:mb-6">18k gold-tone ceramic case. Genuine leather strap. For the moments that define you.</p>
+        <div class="font-mono text-xl sm:text-2xl text-ember mb-5 sm:mb-6">$499</div>
+        <a href="#contact" class="btn-primary block w-full text-center"><span>Choose Prestige</span></a>
       </div>
 
-      <!-- Product 3 -->
-      <div class="glass-card rounded-2xl p-8 text-center group reveal">
-        <div class="mb-6 flex justify-center">
-          <svg width="120" height="160" viewBox="0 0 120 160" fill="none">
-            <rect x="42" y="4" width="36" height="28" rx="6" fill="#181828"/>
-            <rect x="28" y="30" width="64" height="88" rx="16" fill="url(#p3body)"/>
-            <rect x="34" y="36" width="52" height="76" rx="12" fill="#070710"/>
-            <rect x="35" y="37" width="50" height="74" rx="11" fill="url(#p3screen)"/>
-            <text x="60" y="72" text-anchor="middle" font-size="16" font-family="Cormorant Garamond" fill="#f0dfa8" font-weight="300">10:14</text>
-            <!-- Data viz elements -->
-            <rect x="40" y="82" width="5" height="12" rx="1" fill="rgba(200,169,110,0.4)"/>
-            <rect x="48" y="78" width="5" height="16" rx="1" fill="rgba(200,169,110,0.6)"/>
-            <rect x="56" y="74" width="5" height="20" rx="1" fill="#c8a96e"/>
-            <rect x="64" y="80" width="5" height="14" rx="1" fill="rgba(200,169,110,0.5)"/>
-            <rect x="72" y="76" width="5" height="18" rx="1" fill="rgba(200,169,110,0.7)"/>
-            <rect x="42" y="116" width="36" height="36" rx="6" fill="#181828"/>
-            <rect x="90" y="60" width="6" height="16" rx="3" fill="#3a3a5a"/>
-            <defs>
-              <linearGradient id="p3body" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#282838"/>
-                <stop offset="100%" stop-color="#101020"/>
-              </linearGradient>
-              <linearGradient id="p3screen" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#0d0d1a"/>
-                <stop offset="100%" stop-color="#050508"/>
-              </linearGradient>
-            </defs>
-          </svg>
+      <!-- Sport Series -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 text-center group reveal sm:col-span-2 lg:col-span-1">
+        <!-- Sport Series Photo -->
+        <div class="product-img-wrap mb-5 sm:mb-6">
+          <img
+            src="https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=600&q=85&auto=format&fit=crop&crop=center"
+            alt="AURA Sport Series — reinforced polymer, IP68 waterproof"
+            loading="lazy" width="600" height="480"
+          />
+          <div class="product-img-overlay"></div>
         </div>
         <div class="section-label mb-2">Midnight Blue</div>
-        <h3 class="font-display text-3xl font-light text-champagne mb-3">Sport Series</h3>
-        <p class="text-mist text-sm font-light leading-relaxed mb-6">Reinforced polymer case. Fluoro rubber strap. Built for the relentless. IP68 + 50m dive rated.</p>
-        <div class="font-mono text-2xl text-ember mb-6">$349</div>
-        <a href="#contact" class="btn-outline w-full block text-center">Choose Sport</a>
+        <h3 class="font-display text-2xl sm:text-3xl font-light text-champagne mb-3">Sport Series</h3>
+        <p class="text-mist text-sm font-light leading-relaxed mb-5 sm:mb-6">Reinforced polymer case. Fluoro rubber strap. Built for the relentless. IP68 + 50m dive rated.</p>
+        <div class="font-mono text-xl sm:text-2xl text-ember mb-5 sm:mb-6">$349</div>
+        <a href="#contact" class="btn-outline block w-full text-center">Choose Sport</a>
       </div>
     </div>
   </div>
@@ -960,100 +341,99 @@
 
 
 <!-- ====================== FEATURES ====================== -->
-<section id="features" class="py-28 relative">
+<section id="features" class="relative">
   <div class="absolute inset-0 bg-gradient-to-b from-onyx to-carbon"></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="grid lg:grid-cols-2 gap-20 items-start">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-      <!-- Left: Heading -->
+      <!-- Left sticky heading -->
       <div class="lg:sticky lg:top-32">
         <div class="section-label mb-4 reveal">— Why AURA</div>
-        <h2 class="font-display text-5xl lg:text-6xl font-light text-champagne mb-8 reveal">
+        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-champagne mb-6 sm:mb-8 reveal">
           Every detail<br/><em class="shimmer-text">obsessed over.</em>
         </h2>
-        <p class="text-mist font-light leading-relaxed mb-10 reveal">
+        <p class="text-mist font-light leading-relaxed mb-8 sm:mb-10 reveal text-sm sm:text-base">
           Six months in labs. Eleven prototype iterations. One philosophy: technology should feel inevitable, not intrusive.
         </p>
 
-        <!-- Large feature highlight -->
-        <div class="glass-card rounded-2xl p-6 reveal">
+        <!-- AI Engine highlight — liquid glass card -->
+        <div class="glass-card rounded-2xl p-5 sm:p-6 reveal">
           <div class="flex items-start gap-4">
             <div class="icon-ring flex-shrink-0">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2L14.5 9H22L16 13.5L18.5 20.5L12 16L5.5 20.5L8 13.5L2 9H9.5L12 2Z" stroke="#c8a96e" stroke-width="1.5" stroke-linejoin="round"/>
               </svg>
             </div>
             <div>
-              <h4 class="font-display text-xl text-champagne mb-1">AURA Intelligence Engine™</h4>
-              <p class="text-mist text-sm font-light leading-relaxed">Our proprietary on-device AI analyses 2,400 data points per hour — building a health baseline unique to you. No cloud. No privacy compromise. Pure intelligence.</p>
+              <h4 class="font-display text-lg sm:text-xl text-champagne mb-1">AURA Intelligence Engine™</h4>
+              <p class="text-mist text-xs sm:text-sm font-light leading-relaxed">Our proprietary on-device AI analyses 2,400 data points per hour — building a health baseline unique to you. No cloud. No privacy compromise. Pure intelligence.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Right: Feature grid -->
-      <div class="grid sm:grid-cols-2 gap-4 stagger-children">
+      <!-- Right feature grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 stagger-children">
 
-        <div class="glass-card rounded-xl p-6 reveal">
+        <div class="glass-card rounded-xl p-5 sm:p-6 reveal">
           <div class="icon-ring mb-4">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
               <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
             </svg>
           </div>
-          <h4 class="font-display text-lg text-champagne mb-2">ECG + SpO2</h4>
+          <h4 class="font-display text-base sm:text-lg text-champagne mb-2">ECG + SpO2</h4>
           <p class="text-mist text-xs font-light leading-relaxed">Medical-grade electrocardiogram and blood oxygen monitoring. FDA-cleared accuracy, on your wrist.</p>
         </div>
 
-        <div class="glass-card rounded-xl p-6 reveal">
+        <div class="glass-card rounded-xl p-5 sm:p-6 reveal">
           <div class="icon-ring mb-4">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 6v6l4 2"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
             </svg>
           </div>
-          <h4 class="font-display text-lg text-champagne mb-2">18-Day Battery</h4>
+          <h4 class="font-display text-base sm:text-lg text-champagne mb-2">18-Day Battery</h4>
           <p class="text-mist text-xs font-light leading-relaxed">Adaptive power management ensures you get through every adventure without hunting for a charger.</p>
         </div>
 
-        <div class="glass-card rounded-xl p-6 reveal">
+        <div class="glass-card rounded-xl p-5 sm:p-6 reveal">
           <div class="icon-ring mb-4">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             </svg>
           </div>
-          <h4 class="font-display text-lg text-champagne mb-2">Sleep Architecture</h4>
-          <p class="text-mist text-xs font-light leading-relaxed">Tracks REM, deep, and light sleep cycles. Wakes you at the perfect moment in your sleep cycle.</p>
+          <h4 class="font-display text-base sm:text-lg text-champagne mb-2">Sleep Architecture</h4>
+          <p class="text-mist text-xs font-light leading-relaxed">Tracks REM, deep, and light sleep cycles. Wakes you at the perfect moment in your cycle.</p>
         </div>
 
-        <div class="glass-card rounded-xl p-6 reveal">
+        <div class="glass-card rounded-xl p-5 sm:p-6 reveal">
           <div class="icon-ring mb-4">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
               <circle cx="12" cy="12" r="3"/>
               <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
             </svg>
           </div>
-          <h4 class="font-display text-lg text-champagne mb-2">Always-On AMOLED</h4>
-          <p class="text-mist text-xs font-light leading-relaxed">2,000-nit peak brightness. Sapphire crystal lens. Crisp in direct sunlight, invisible in darkness.</p>
+          <h4 class="font-display text-base sm:text-lg text-champagne mb-2">Always-On AMOLED</h4>
+          <p class="text-mist text-xs font-light leading-relaxed">2,000-nit peak brightness. Sapphire crystal lens. Crisp in sunlight, invisible in darkness.</p>
         </div>
 
-        <div class="glass-card rounded-xl p-6 reveal">
+        <div class="glass-card rounded-xl p-5 sm:p-6 reveal">
           <div class="icon-ring mb-4">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
               <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
             </svg>
           </div>
-          <h4 class="font-display text-lg text-champagne mb-2">Stress Radar</h4>
+          <h4 class="font-display text-base sm:text-lg text-champagne mb-2">Stress Radar</h4>
           <p class="text-mist text-xs font-light leading-relaxed">HRV-based stress detection triggers breathing exercises before you even feel overwhelmed.</p>
         </div>
 
-        <div class="glass-card rounded-xl p-6 reveal">
+        <div class="glass-card rounded-xl p-5 sm:p-6 reveal">
           <div class="icon-ring mb-4">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a96e" stroke-width="1.5" stroke-linecap="round">
               <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
             </svg>
           </div>
-          <h4 class="font-display text-lg text-champagne mb-2">50m Water Resistant</h4>
+          <h4 class="font-display text-base sm:text-lg text-champagne mb-2">50m Water Resistant</h4>
           <p class="text-mist text-xs font-light leading-relaxed">IP68 rated. 5ATM water resistance. Pool, ocean, downpour — AURA keeps ticking.</p>
         </div>
       </div>
@@ -1063,156 +443,152 @@
 
 
 <!-- =================== MARQUEE STRIP ================= -->
-<div class="py-5 overflow-hidden border-y border-ember/10" style="background: var(--marquee-bg); transition: background 0.5s ease;">
-  <div class="flex gap-12 animate-[marquee_20s_linear_infinite] whitespace-nowrap" style="animation: marquee 20s linear infinite;">
-    <style>@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }</style>
-    <template id="marquee-items">
-      <span class="font-mono text-xs text-ember tracking-widest">◆ TITANIUM CASE</span>
-      <span class="font-mono text-xs text-mist tracking-widest">◆ 18-DAY BATTERY</span>
-      <span class="font-mono text-xs text-ember tracking-widest">◆ AI HEALTH ENGINE</span>
-      <span class="font-mono text-xs text-mist tracking-widest">◆ ECG CERTIFIED</span>
-      <span class="font-mono text-xs text-ember tracking-widest">◆ SAPPHIRE GLASS</span>
-      <span class="font-mono text-xs text-mist tracking-widest">◆ SLEEP TRACKING</span>
-      <span class="font-mono text-xs text-ember tracking-widest">◆ 50M WATERPROOF</span>
-      <span class="font-mono text-xs text-mist tracking-widest">◆ MADE IN SWITZERLAND</span>
-    </template>
+<!-- ═══ MARQUEE — pure CSS, no JS needed ═══ -->
+<style>
+  @keyframes marqueeRoll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-strip {
+    overflow: hidden;
+    border-top: 1px solid rgba(200,169,110,0.1);
+    border-bottom: 1px solid rgba(200,169,110,0.1);
+    background: rgba(10,10,16,0.7);
+  }
+  .marquee-inner {
+    display: flex;
+    width: max-content;        /* shrink-wrap to content */
+    animation: marqueeRoll 30s linear infinite;
+    will-change: transform;
+  }
+  .marquee-strip:hover .marquee-inner {
+    animation-play-state: paused;
+  }
+  .m-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #8a8a9a;
+  }
+  .m-item .dot { color: #c8a96e; }
+</style>
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <!-- Set A -->
+    <span class="m-item"><span class="dot">◆</span> Titanium Case</span>
+    <span class="m-item"><span class="dot">◆</span> 18-Day Battery</span>
+    <span class="m-item"><span class="dot">◆</span> AI Health Engine</span>
+    <span class="m-item"><span class="dot">◆</span> ECG Certified</span>
+    <span class="m-item"><span class="dot">◆</span> Sapphire Glass</span>
+    <span class="m-item"><span class="dot">◆</span> Sleep Tracking</span>
+    <span class="m-item"><span class="dot">◆</span> 50m Waterproof</span>
+    <span class="m-item"><span class="dot">◆</span> Made in Switzerland</span>
+    <span class="m-item"><span class="dot">◆</span> AMOLED Display</span>
+    <span class="m-item"><span class="dot">◆</span> IP68 Rated</span>
+    <!-- Set B — exact duplicate for seamless loop -->
+    <span class="m-item"><span class="dot">◆</span> Titanium Case</span>
+    <span class="m-item"><span class="dot">◆</span> 18-Day Battery</span>
+    <span class="m-item"><span class="dot">◆</span> AI Health Engine</span>
+    <span class="m-item"><span class="dot">◆</span> ECG Certified</span>
+    <span class="m-item"><span class="dot">◆</span> Sapphire Glass</span>
+    <span class="m-item"><span class="dot">◆</span> Sleep Tracking</span>
+    <span class="m-item"><span class="dot">◆</span> 50m Waterproof</span>
+    <span class="m-item"><span class="dot">◆</span> Made in Switzerland</span>
+    <span class="m-item"><span class="dot">◆</span> AMOLED Display</span>
+    <span class="m-item"><span class="dot">◆</span> IP68 Rated</span>
   </div>
 </div>
-<script>
-  const strip = document.querySelector('[style*="marquee"]');
-  const tpl = document.getElementById('marquee-items');
-  // Build 4x content for seamless loop
-  let html = '';
-  for(let i=0;i<4;i++) html += tpl.innerHTML;
-  strip.innerHTML = html;
-</script>
 
 
 <!-- ===================== TEAM ====================== -->
-<section id="team" class="py-28 relative">
+<section id="team" class="relative">
   <div class="absolute inset-0 bg-gradient-to-b from-carbon to-onyx"></div>
-  <div class="radial-ember absolute inset-0 opacity-40"></div>
+  <div class="radial-ember absolute inset-0 opacity-35"></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="text-center mb-20 reveal">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="text-center mb-12 sm:mb-16 lg:mb-20 reveal">
       <div class="section-label mb-4">— The Minds</div>
-      <h2 class="font-display text-5xl md:text-6xl font-light text-champagne mb-6">
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-light text-champagne mb-5">
         Built by <em class="shimmer-text">obsessives.</em>
       </h2>
-      <p class="text-mist max-w-lg mx-auto font-light">
+      <p class="text-mist max-w-lg mx-auto font-light text-sm sm:text-base">
         Our team left roles at Apple, LVMH, and DeepMind to build the watch they always wanted.
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 stagger-children">
 
-      <!-- Team Member -->
-      <div class="team-card glass-card rounded-2xl overflow-hidden reveal">
-        <div class="relative h-52 overflow-hidden">
-          <!-- Abstract portrait -->
-          <div class="absolute inset-0 bg-gradient-to-b from-carbon to-obsidian"></div>
-          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 208" fill="none">
-            <circle cx="100" cy="75" r="38" fill="url(#t1g)"/>
-            <rect x="30" y="130" width="140" height="80" rx="20" fill="url(#t1g2)"/>
-            <circle cx="100" cy="75" r="20" fill="#0a0a0f" opacity="0.3"/>
-            <text x="100" y="80" text-anchor="middle" font-size="32" fill="#c8a96e" opacity="0.4">★</text>
-            <defs>
-              <radialGradient id="t1g" cx="50%" cy="50%">
-                <stop offset="0%" stop-color="#3a3020"/>
-                <stop offset="100%" stop-color="#1a1810"/>
-              </radialGradient>
-              <linearGradient id="t1g2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#252530"/>
-                <stop offset="100%" stop-color="#101018"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="overlay absolute inset-0 bg-gradient-to-t from-ember/20 to-transparent"></div>
+      <div class="team-card glass-card rounded-2xl reveal">
+        <div class="team-photo-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&q=90&auto=format&fit=crop&crop=faces,top&h=500"
+            alt="Layla Harmon, CEO & Co-founder of AURA"
+            class="team-photo-img"
+            loading="lazy" width="400" height="240"
+          />
+          <div class="team-photo-overlay"></div>
         </div>
-        <div class="p-5">
-          <h4 class="font-display text-xl text-champagne mb-0.5">Layla Harmon</h4>
-          <div class="font-mono text-xs text-ember mb-3">CEO & Co-founder</div>
+        <div class="p-4 sm:p-5">
+          <h4 class="font-display text-lg sm:text-xl text-champagne mb-0.5">Layla Harmon</h4>
+          <div class="font-mono text-xs text-ember mb-2">CEO & Co-founder</div>
           <p class="text-mist text-xs font-light leading-relaxed">Former Apple Watch design lead. 12 patents in wearable ergonomics.</p>
         </div>
       </div>
 
-      <div class="team-card glass-card rounded-2xl overflow-hidden reveal">
-        <div class="relative h-52 overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-b from-carbon to-obsidian"></div>
-          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 208" fill="none">
-            <circle cx="100" cy="75" r="38" fill="url(#t2g)"/>
-            <rect x="30" y="130" width="140" height="80" rx="20" fill="url(#t2g2)"/>
-            <text x="100" y="82" text-anchor="middle" font-size="36" fill="#8a8a9a" opacity="0.5">◈</text>
-            <defs>
-              <radialGradient id="t2g" cx="50%" cy="50%">
-                <stop offset="0%" stop-color="#1e2030"/>
-                <stop offset="100%" stop-color="#0e0e18"/>
-              </radialGradient>
-              <linearGradient id="t2g2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#1e2030"/>
-                <stop offset="100%" stop-color="#0a0a18"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="overlay absolute inset-0 bg-gradient-to-t from-ember/20 to-transparent"></div>
+      <div class="team-card glass-card rounded-2xl reveal">
+        <div class="team-photo-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&q=90&auto=format&fit=crop&crop=faces,top&h=500"
+            alt="Marcus Veil, CTO & Co-founder of AURA"
+            class="team-photo-img"
+            loading="lazy" width="400" height="240"
+          />
+          <div class="team-photo-overlay"></div>
         </div>
-        <div class="p-5">
-          <h4 class="font-display text-xl text-champagne mb-0.5">Marcus Veil</h4>
-          <div class="font-mono text-xs text-ember mb-3">CTO & Co-founder</div>
+        <div class="p-4 sm:p-5">
+          <h4 class="font-display text-lg sm:text-xl text-champagne mb-0.5">Marcus Veil</h4>
+          <div class="font-mono text-xs text-ember mb-2">CTO & Co-founder</div>
           <p class="text-mist text-xs font-light leading-relaxed">PhD in embedded AI, ex-DeepMind. Wrote the AURA Intelligence Engine from scratch.</p>
         </div>
       </div>
 
-      <div class="team-card glass-card rounded-2xl overflow-hidden reveal">
-        <div class="relative h-52 overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-b from-carbon to-obsidian"></div>
-          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 208" fill="none">
-            <circle cx="100" cy="75" r="38" fill="url(#t3g)"/>
-            <rect x="30" y="130" width="140" height="80" rx="20" fill="url(#t3g2)"/>
-            <text x="100" y="82" text-anchor="middle" font-size="36" fill="#c8a96e" opacity="0.5">◇</text>
-            <defs>
-              <radialGradient id="t3g" cx="50%" cy="50%">
-                <stop offset="0%" stop-color="#2e2018"/>
-                <stop offset="100%" stop-color="#1a1208"/>
-              </radialGradient>
-              <linearGradient id="t3g2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#2a2018"/>
-                <stop offset="100%" stop-color="#120e08"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="overlay absolute inset-0 bg-gradient-to-t from-ember/20 to-transparent"></div>
+      <div class="team-card glass-card rounded-2xl reveal">
+        <div class="team-photo-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=90&auto=format&fit=crop&crop=faces,top&h=500"
+            alt="Priya Nair, Head of Health at AURA"
+            class="team-photo-img"
+            loading="lazy" width="400" height="240"
+          />
+          <div class="team-photo-overlay"></div>
         </div>
-        <div class="p-5">
-          <h4 class="font-display text-xl text-champagne mb-0.5">Priya Nair</h4>
-          <div class="font-mono text-xs text-ember mb-3">Head of Health</div>
+        <div class="p-4 sm:p-5">
+          <h4 class="font-display text-lg sm:text-xl text-champagne mb-0.5">Priya Nair</h4>
+          <div class="font-mono text-xs text-ember mb-2">Head of Health</div>
           <p class="text-mist text-xs font-light leading-relaxed">Cardiologist turned med-tech pioneer. Designed the FDA-cleared ECG algorithm.</p>
         </div>
       </div>
 
-      <div class="team-card glass-card rounded-2xl overflow-hidden reveal">
-        <div class="relative h-52 overflow-hidden">
-          <div class="absolute inset-0 bg-gradient-to-b from-carbon to-obsidian"></div>
-          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 200 208" fill="none">
-            <circle cx="100" cy="75" r="38" fill="url(#t4g)"/>
-            <rect x="30" y="130" width="140" height="80" rx="20" fill="url(#t4g2)"/>
-            <text x="100" y="82" text-anchor="middle" font-size="36" fill="#888" opacity="0.5">⬡</text>
-            <defs>
-              <radialGradient id="t4g" cx="50%" cy="50%">
-                <stop offset="0%" stop-color="#1a2030"/>
-                <stop offset="100%" stop-color="#0a1018"/>
-              </radialGradient>
-              <linearGradient id="t4g2" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#18202e"/>
-                <stop offset="100%" stop-color="#080e18"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="overlay absolute inset-0 bg-gradient-to-t from-ember/20 to-transparent"></div>
+      <div class="team-card glass-card rounded-2xl reveal">
+        <div class="team-photo-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=90&auto=format&fit=crop&crop=faces,top&h=500"
+            alt="Julien Morel, Chief of Craft at AURA"
+            class="team-photo-img"
+            loading="lazy" width="400" height="240"
+          />
+          <div class="team-photo-overlay"></div>
         </div>
-        <div class="p-5">
-          <h4 class="font-display text-xl text-champagne mb-0.5">Julien Morel</h4>
-          <div class="font-mono text-xs text-ember mb-3">Chief of Craft</div>
+        <div class="p-4 sm:p-5">
+          <h4 class="font-display text-lg sm:text-xl text-champagne mb-0.5">Julien Morel</h4>
+          <div class="font-mono text-xs text-ember mb-2">Chief of Craft</div>
           <p class="text-mist text-xs font-light leading-relaxed">20 years at Cartier and TAG Heuer. Every surface, every angle — his obsession.</p>
         </div>
       </div>
@@ -1222,68 +598,62 @@
 
 
 <!-- ======================== CONTACT =========================== -->
-<section id="contact" class="py-28 relative">
+<section id="contact" class="relative">
   <div class="absolute inset-0 bg-gradient-to-b from-onyx to-obsidian"></div>
   <div class="radial-ember absolute inset-0"></div>
 
-  <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-12">
-    <div class="text-center mb-16 reveal">
+  <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="text-center mb-10 sm:mb-14 lg:mb-16 reveal">
       <div class="section-label mb-4">— Reserve Yours</div>
-      <h2 class="font-display text-5xl md:text-6xl font-light text-champagne mb-6">
+      <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-light text-champagne mb-5">
         Join the <em class="shimmer-text">waitlist.</em>
       </h2>
-      <p class="text-mist font-light max-w-md mx-auto">
+      <p class="text-mist font-light max-w-md mx-auto text-sm sm:text-base">
         First 500 orders receive engraving, a premium leather strap, and early access to AURA OS 2.0.
       </p>
     </div>
 
-    <div class="glass-card rounded-2xl p-8 md:p-12 reveal">
-      <!-- Formspree form -->
+    <div class="glass-card rounded-2xl p-6 sm:p-8 md:p-12 reveal">
       <form
         id="contact-form"
         action="https://formspree.io/f/mdajrpky"
         method="POST"
-        class="grid md:grid-cols-2 gap-6"
+        class="grid sm:grid-cols-2 gap-4 sm:gap-6"
         onsubmit="handleFormSubmit(event)"
       >
         <div class="flex flex-col gap-2">
           <label class="font-mono text-xs text-ember tracking-widest">First Name</label>
-          <input type="text" name="firstName" placeholder="Layla" required
-            class="form-input px-4 py-3 w-full" />
+          <input type="text" name="firstName" placeholder="Layla" required class="form-input px-4 py-3"/>
         </div>
         <div class="flex flex-col gap-2">
           <label class="font-mono text-xs text-ember tracking-widest">Last Name</label>
-          <input type="text" name="lastName" placeholder="Harmon" required
-            class="form-input px-4 py-3 w-full" />
+          <input type="text" name="lastName" placeholder="Harmon" required class="form-input px-4 py-3"/>
         </div>
         <div class="flex flex-col gap-2">
           <label class="font-mono text-xs text-ember tracking-widest">Email Address</label>
-          <input type="email" name="email" placeholder="you@example.com" required
-            class="form-input px-4 py-3 w-full" />
+          <input type="email" name="email" placeholder="you@example.com" required class="form-input px-4 py-3"/>
         </div>
         <div class="flex flex-col gap-2">
           <label class="font-mono text-xs text-ember tracking-widest">Preferred Series</label>
-          <select name="series" class="form-input px-4 py-3 w-full appearance-none cursor-pointer">
+          <select name="series" class="form-input px-4 py-3 appearance-none cursor-pointer">
             <option value="" class="bg-obsidian">Select a series...</option>
-            <option value="classic" class="bg-obsidian">Classic — $299</option>
+            <option value="classic"  class="bg-obsidian">Classic — $299</option>
             <option value="prestige" class="bg-obsidian">Prestige — $499</option>
-            <option value="sport" class="bg-obsidian">Sport — $349</option>
+            <option value="sport"    class="bg-obsidian">Sport — $349</option>
           </select>
         </div>
-        <div class="flex flex-col gap-2 md:col-span-2">
+        <div class="flex flex-col gap-2 sm:col-span-2">
           <label class="font-mono text-xs text-ember tracking-widest">Message (Optional)</label>
-          <textarea name="message" rows="4" placeholder="Tell us about any customisation preferences..."
-            class="form-input px-4 py-3 w-full resize-none"></textarea>
+          <textarea name="message" rows="4" placeholder="Tell us about any customisation preferences..." class="form-input px-4 py-3 resize-none"></textarea>
         </div>
-        <div class="md:col-span-2 flex flex-col sm:flex-row items-center gap-4">
+        <div class="sm:col-span-2 flex flex-col sm:flex-row items-center gap-4">
           <button type="submit" class="btn-primary w-full sm:w-auto">
             <span>Reserve My AURA →</span>
           </button>
-          <p class="text-mist text-xs font-light">No payment now. We'll reach out when your series ships.</p>
+          <p class="text-mist text-xs font-light text-center sm:text-left">No payment now. We'll reach out when your series ships.</p>
         </div>
       </form>
 
-      <!-- Success message -->
       <div id="form-success" class="hidden text-center py-8">
         <div class="text-4xl mb-4">✦</div>
         <h3 class="font-display text-2xl text-champagne mb-2">You're on the list.</h3>
@@ -1297,63 +667,65 @@
 <!-- ===================== FOOTER ====================== -->
 <footer class="relative border-t border-ember/10">
   <div class="absolute inset-0 bg-obsidian"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-16">
-    <div class="grid md:grid-cols-4 gap-12 mb-12">
-      <div class="md:col-span-2">
-        <div class="flex items-center gap-3 mb-5">
-          <svg viewBox="0 0 32 32" fill="none" width="28" height="28">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 sm:py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-12">
+      <div class="col-span-2 md:col-span-2">
+        <div class="flex items-center gap-3 mb-4 sm:mb-5">
+          <svg viewBox="0 0 32 32" fill="none" width="26" height="26">
             <circle cx="16" cy="16" r="14" stroke="url(#fLogoGrad)" stroke-width="1.5"/>
             <path d="M16 6 L16 10 M16 22 L16 26 M6 16 L10 16 M22 16 L26 16" stroke="url(#fLogoGrad)" stroke-width="1.5" stroke-linecap="round"/>
             <circle cx="16" cy="16" r="4" fill="url(#fLogoGrad)"/>
             <defs>
               <linearGradient id="fLogoGrad" x1="0" y1="0" x2="32" y2="32">
-                <stop offset="0%" stop-color="#c8a96e"/>
-                <stop offset="100%" stop-color="#e8c97e"/>
+                <stop offset="0%" stop-color="#c8a96e"/><stop offset="100%" stop-color="#e8c97e"/>
               </linearGradient>
             </defs>
           </svg>
-          <span class="font-display text-2xl font-light tracking-widest text-champagne">AURA</span>
+          <span class="font-display text-xl sm:text-2xl font-light tracking-widest text-champagne">AURA</span>
         </div>
         <p class="text-mist text-sm font-light leading-relaxed max-w-xs">
           The intelligent timepiece. Designed for the extraordinary. Worn by the relentless.
         </p>
-        <div class="flex gap-4 mt-6">
-          <a href="#" class="w-9 h-9 glass rounded-full flex items-center justify-center text-mist hover:text-ember transition-colors" aria-label="Twitter">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.851L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <div class="flex gap-3 mt-5 sm:mt-6">
+          <a href="#" class="w-9 h-9 glass rounded-full flex items-center justify-center text-mist hover:text-ember transition-colors" aria-label="Twitter"
+             style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.736-8.851L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <a href="#" class="w-9 h-9 glass rounded-full flex items-center justify-center text-mist hover:text-ember transition-colors" aria-label="Instagram">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          <a href="#" class="w-9 h-9 glass rounded-full flex items-center justify-center text-mist hover:text-ember transition-colors" aria-label="Instagram"
+             style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
           </a>
-          <a href="#" class="w-9 h-9 glass rounded-full flex items-center justify-center text-mist hover:text-ember transition-colors" aria-label="LinkedIn">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="#" class="w-9 h-9 glass rounded-full flex items-center justify-center text-mist hover:text-ember transition-colors" aria-label="LinkedIn"
+             style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.06);">
+            <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
         </div>
       </div>
 
       <div>
-        <h5 class="font-mono text-xs text-ember tracking-widest mb-5">PRODUCT</h5>
-        <div class="flex flex-col gap-3">
-          <a href="#product" class="text-mist text-sm hover:text-champagne transition-colors font-light">Classic Series</a>
-          <a href="#product" class="text-mist text-sm hover:text-champagne transition-colors font-light">Prestige Series</a>
-          <a href="#product" class="text-mist text-sm hover:text-champagne transition-colors font-light">Sport Series</a>
+        <h5 class="font-mono text-xs text-ember tracking-widest mb-4 sm:mb-5">PRODUCT</h5>
+        <div class="flex flex-col gap-2 sm:gap-3">
+          <a href="#product"  class="text-mist text-sm hover:text-champagne transition-colors font-light">Classic Series</a>
+          <a href="#product"  class="text-mist text-sm hover:text-champagne transition-colors font-light">Prestige Series</a>
+          <a href="#product"  class="text-mist text-sm hover:text-champagne transition-colors font-light">Sport Series</a>
           <a href="#features" class="text-mist text-sm hover:text-champagne transition-colors font-light">Features</a>
         </div>
       </div>
 
       <div>
-        <h5 class="font-mono text-xs text-ember tracking-widest mb-5">COMPANY</h5>
-        <div class="flex flex-col gap-3">
-          <a href="#team" class="text-mist text-sm hover:text-champagne transition-colors font-light">Team</a>
+        <h5 class="font-mono text-xs text-ember tracking-widest mb-4 sm:mb-5">COMPANY</h5>
+        <div class="flex flex-col gap-2 sm:gap-3">
+          <a href="#team"    class="text-mist text-sm hover:text-champagne transition-colors font-light">Team</a>
           <a href="#contact" class="text-mist text-sm hover:text-champagne transition-colors font-light">Contact</a>
-          <a href="#" class="text-mist text-sm hover:text-champagne transition-colors font-light">Press Kit</a>
-          <a href="#" class="text-mist text-sm hover:text-champagne transition-colors font-light">Privacy Policy</a>
+          <a href="#"        class="text-mist text-sm hover:text-champagne transition-colors font-light">Press Kit</a>
+          <a href="#"        class="text-mist text-sm hover:text-champagne transition-colors font-light">Privacy Policy</a>
         </div>
       </div>
     </div>
 
-    <div class="divider mb-8"></div>
+    <div class="divider mb-6 sm:mb-8"></div>
 
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
       <p class="font-mono text-xs text-mist">© 2026 AURA Technologies Inc. All rights reserved.</p>
       <p class="font-mono text-xs text-mist">Crafted with precision. Powered by care.</p>
     </div>
@@ -1363,13 +735,14 @@
 
 <!-- ================= CHATBOT WIDGET ==================== -->
 <div id="chatbot-widget">
-  <!-- Chat Window -->
-  <div id="chat-window" class="glass border border-ember/20 flex-col">
-    <!-- Header -->
-    <div class="flex items-center justify-between px-4 py-3 border-b border-ember/10 bg-obsidian/80">
+  <div id="chat-window" class="flex-col">
+    <!-- Chat header — liquid glass -->
+    <div class="flex items-center justify-between px-4 py-3 border-b border-ember/10"
+         style="background:rgba(10,10,20,0.85);backdrop-filter:blur(20px);box-shadow:inset 0 -1px 0 rgba(255,255,255,0.04);">
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-ember to-gold flex items-center justify-center">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2.5">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-ember to-gold flex items-center justify-center flex-shrink-0"
+             style="box-shadow:inset 0 1px 0 rgba(255,255,255,0.3),0 4px 12px rgba(200,169,110,0.4);">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#07070d" stroke-width="2.5">
             <path d="M12 2L14.5 9H22L16 13.5L18.5 20.5L12 16L5.5 20.5L8 13.5L2 9H9.5L12 2Z"/>
           </svg>
         </div>
@@ -1377,26 +750,27 @@
           <div class="font-mono text-xs text-champagne">AURA Assistant</div>
           <div class="flex items-center gap-1.5">
             <div class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
-            <span class="font-mono text-xs text-mist" style="font-size:0.6rem">Online</span>
+            <span class="font-mono text-mist" style="font-size:0.6rem">Online</span>
           </div>
         </div>
       </div>
       <button onclick="toggleChat()" class="text-mist hover:text-ember transition-colors p-1">
-        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path d="M18 6L6 18M6 6l12 12"/>
         </svg>
       </button>
     </div>
 
     <!-- Messages -->
-    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3 bg-obsidian/60">
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3"
+         style="background:rgba(7,7,13,0.7);">
       <div class="chat-msg bot">
         👋 Hello! I'm the AURA Assistant. Ask me anything about our watches — features, pricing, battery life, or how to order.
       </div>
     </div>
 
     <!-- Typing indicator -->
-    <div id="typing-indicator" class="hidden px-4 py-2 bg-obsidian/60">
+    <div id="typing-indicator" class="hidden px-4 py-2" style="background:rgba(7,7,13,0.7);">
       <div class="flex gap-1.5 items-center">
         <div class="typing-dot"></div>
         <div class="typing-dot"></div>
@@ -1404,8 +778,9 @@
       </div>
     </div>
 
-    <!-- Input -->
-    <div class="flex gap-2 p-3 border-t border-ember/10 bg-obsidian/80">
+    <!-- Input area -->
+    <div class="flex gap-2 p-3 border-t border-ember/10"
+         style="background:rgba(10,10,20,0.85);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,0.04);">
       <input
         id="chat-input"
         type="text"
@@ -1413,8 +788,10 @@
         class="form-input flex-1 px-3 py-2 text-sm"
         onkeydown="if(event.key==='Enter') sendChat()"
       />
-      <button onclick="sendChat()" class="w-9 h-9 rounded bg-gradient-to-br from-ember to-gold flex items-center justify-center flex-shrink-0 hover:opacity-90 transition-opacity">
-        <svg width="14" height="14" fill="none" stroke="#0a0a0f" stroke-width="2.5" viewBox="0 0 24 24">
+      <button onclick="sendChat()"
+        class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 hover:opacity-90 transition-opacity"
+        style="background:linear-gradient(135deg,var(--ember),var(--gold));box-shadow:inset 0 1px 0 rgba(255,255,255,0.25),0 4px 12px rgba(200,169,110,0.35);">
+        <svg width="13" height="13" fill="none" stroke="#07070d" stroke-width="2.5" viewBox="0 0 24 24">
           <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
         </svg>
       </button>
@@ -1423,209 +800,13 @@
 
   <!-- FAB -->
   <div id="chat-fab" onclick="toggleChat()" title="Chat with AURA">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0f" stroke-width="2" stroke-linecap="round">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#07070d" stroke-width="2" stroke-linecap="round">
       <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
     </svg>
   </div>
 </div>
 
 
-<!-- =============== SCRIPTS =============== -->
-<script>
-// -- Theme toggle --
-function toggleTheme() {
-  const isLight = document.documentElement.classList.toggle('light');
-  localStorage.setItem('aura-theme', isLight ? 'light' : 'dark');
-  syncMobileKnob();
-}
-
-function syncMobileKnob() {
-  const knobM = document.getElementById('theme-knob-mobile');
-  if(knobM) knobM.style.transform = document.documentElement.classList.contains('light') ? 'translateX(20px)' : '';
-}
-
-// Persist preference across page loads
-(function(){
-  const saved = localStorage.getItem('aura-theme');
-  if(saved === 'light') document.documentElement.classList.add('light');
-  setTimeout(syncMobileKnob, 100);
-})();
-
-document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
-
-// -- Navbar scroll --
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('navbar');
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// -- Mobile menu --
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-let menuOpen = false;
-menuToggle.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  mobileMenu.classList.toggle('open', menuOpen);
-  document.getElementById('bar2').style.opacity = menuOpen ? '0' : '1';
-  document.getElementById('bar1').style.transform = menuOpen ? 'rotate(45deg) translate(4px,4px)' : '';
-  document.getElementById('bar3').style.transform = menuOpen ? 'rotate(-45deg) translate(4px,-4px)' : '';
-});
-function closeMobileMenu() {
-  menuOpen = false;
-  mobileMenu.classList.remove('open');
-  document.getElementById('bar2').style.opacity = '1';
-  document.getElementById('bar1').style.transform = '';
-  document.getElementById('bar3').style.transform = '';
-}
-
-// -- Scroll reveal --
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(el => {
-    if(el.isIntersecting) { el.target.classList.add('visible'); }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => observer.observe(el));
-
-window.addEventListener('load', () => {
-  if (window.Motion) {
-    const { animate } = window.Motion;
-    animate('#hero h1', { opacity: [0, 1], y: [40, 0] }, { duration: 0.9, delay: 0.2 });
-    animate('.stat-number', { opacity: [0, 1], scale: [0.8, 1] }, { duration: 0.6, delay: 0.5 });
-  }
-});
-
-// -- Form submission --
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById('contact-form');
-  const btn = form.querySelector('button[type="submit"]');
-  btn.innerHTML = '<span>Sending...</span>';
-  btn.disabled = true;
-
-  fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  }).then(res => {
-    if(res.ok) {
-      form.classList.add('hidden');
-      document.getElementById('form-success').classList.remove('hidden');
-    } else {
-      btn.innerHTML = '<span>Reserve My AURA →</span>';
-      btn.disabled = false;
-      alert('Something went wrong. Please try again.');
-    }
-  }).catch(() => {
-    btn.innerHTML = '<span>Reserve My AURA →</span>';
-    btn.disabled = false;
-  });
-}
-
-// ---- Chatbot ----
-let chatOpen = false;
-
-function toggleChat() {
-  chatOpen = !chatOpen;
-  const win = document.getElementById('chat-window');
-  win.classList.toggle('open', chatOpen);
-}
-
-const GROQ_API_KEY = 'gsk_demo'; 
-
-const systemPrompt = `You are the AURA smartwatch assistant. AURA is a premium AI-powered smartwatch brand with three models:
-- Classic Series ($299): Matte black titanium, sapphire glass
-- Prestige Series ($499): 18k gold-tone ceramic, leather strap — bestseller
-- Sport Series ($349): Reinforced polymer, IP68 waterproof
-
-Key features: 18-day battery, ECG + SpO2, AMOLED display, AI health engine, 50m water resistance, sleep tracking.
-The founding team includes: Layla Harmon (CEO, ex-Apple), Marcus Veil (CTO, ex-DeepMind), Priya Nair (Health, cardiologist), Julien Morel (Craft, ex-Cartier).
-Be warm, concise, and knowledgeable. Help users pick the right model and encourage them to join the waitlist.`;
-
-let chatHistory = [];
-
-async function sendChat() {
-  const input = document.getElementById('chat-input');
-  const msg = input.value.trim();
-  if(!msg) return;
-
-  input.value = '';
-  appendMessage(msg, 'user');
-  chatHistory.push({ role: 'user', content: msg });
-
-  // Show typing
-  document.getElementById('typing-indicator').classList.remove('hidden');
-  scrollChat();
-
-  try {
-    const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${GROQ_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: 'llama3-8b-8192',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          ...chatHistory
-        ],
-        max_tokens: 300,
-        temperature: 0.7
-      })
-    });
-
-    const data = await res.json();
-    document.getElementById('typing-indicator').classList.add('hidden');
-
-    if(data.choices && data.choices[0]) {
-      const reply = data.choices[0].message.content;
-      chatHistory.push({ role: 'assistant', content: reply });
-      appendMessage(reply, 'bot');
-    } else {
-      throw new Error('No response');
-    }
-  } catch(err) {
-    document.getElementById('typing-indicator').classList.add('hidden');
-    // Fallback responses
-    const fallbacks = {
-      'battery': 'The AURA lasts up to 18 days on a single charge thanks to our adaptive power management system! ⚡',
-      'price': 'AURA starts at $299 for the Classic, $349 for Sport, and $499 for the Prestige series. All include free engraving for early orders! ✦',
-      'water': 'All AURA models are IP68 rated. The Sport Series goes to 50m depth — perfect for swimming and diving! 🌊',
-      'health': 'AURA monitors ECG, SpO2, heart rate, HRV stress levels, and full sleep architecture. Our AI engine analyses 2,400+ data points per hour. 🫀',
-      'order': 'Scroll up to our waitlist form to reserve yours! First 500 orders get free engraving + a premium leather strap. ✨',
-    };
-    const lower = msg.toLowerCase();
-    let reply = "I'd love to help! For the best experience, ask me about our watch features, pricing, battery life, or how to order.";
-    for(const [key, val] of Object.entries(fallbacks)) {
-      if(lower.includes(key)) { reply = val; break; }
-    }
-    chatHistory.push({ role: 'assistant', content: reply });
-    appendMessage(reply, 'bot');
-  }
-}
-
-function appendMessage(text, role) {
-  const container = document.getElementById('chat-messages');
-  const div = document.createElement('div');
-  div.className = `chat-msg ${role}`;
-  div.textContent = text;
-  container.appendChild(div);
-  scrollChat();
-}
-
-function scrollChat() {
-  const c = document.getElementById('chat-messages');
-  setTimeout(() => { c.scrollTop = c.scrollHeight; }, 50);
-}
-
-//-- Framer Motion - if available --
-try {
-  if(typeof window.Motion !== 'undefined') {
-    console.log('Framer Motion loaded');
-  }
-} catch(e) {}
-</script>
-
+<script src="main.js"></script>
 </body>
 </html>
