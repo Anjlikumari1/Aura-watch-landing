@@ -26,25 +26,165 @@
   --scrollbar-track: #07070d;
   --orbit-ring-color: rgba(200,169,110,0.07);
 
-  /* Liquid Glass — dark */
-  --lg-bg:             rgba(255,255,255,0.028);
-  --lg-border:         rgba(200,169,110,0.18);
-  --lg-highlight:      rgba(255,255,255,0.06);
-  --lg-shadow:         rgba(0,0,0,0.55);
-  --lg-blur:           24px;
-  --lg-card-bg:        linear-gradient(135deg, rgba(255,255,255,0.055) 0%, rgba(200,169,110,0.018) 60%, rgba(255,255,255,0.008) 100%);
-  --lg-card-border:    rgba(200,169,110,0.16);
-  --lg-card-highlight: rgba(255,255,255,0.05);
-  --lg-hover-bg:       linear-gradient(135deg, rgba(200,169,110,0.09) 0%, rgba(255,255,255,0.04) 100%);
-  --lg-hover-border:   rgba(200,169,110,0.42);
+  /* Liquid Glass — dark (enhanced glassmorphism) */
+  --lg-bg:             rgba(255,255,255,0.06);
+  --lg-border:         rgba(200,169,110,0.32);
+  --lg-highlight:      rgba(255,255,255,0.14);
+  --lg-shadow:         rgba(0,0,0,0.65);
+  --lg-blur:           40px;
+  --lg-card-bg:        linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(200,169,110,0.04) 50%, rgba(255,255,255,0.03) 100%);
+  --lg-card-border:    rgba(200,169,110,0.28);
+  --lg-card-highlight: rgba(255,255,255,0.12);
+  --lg-hover-bg:       linear-gradient(135deg, rgba(200,169,110,0.14) 0%, rgba(255,255,255,0.09) 100%);
+  --lg-hover-border:   rgba(200,169,110,0.65);
   --nav-bg:            rgba(7,7,13,0.0);
-  --nav-scrolled-bg:   rgba(7,7,13,0.88);
-  --nav-scrolled-border: rgba(200,169,110,0.12);
-  --form-bg:           rgba(255,255,255,0.035);
+  --nav-scrolled-bg:   rgba(7,7,13,0.75);
+  --nav-scrolled-border: rgba(200,169,110,0.22);
+  --form-bg:           rgba(255,255,255,0.07);
   --form-color:        #f0dfa8;
-  --form-border:       rgba(200,169,110,0.16);
+  --form-border:       rgba(200,169,110,0.28);
 
   --theme-transition: background 0.5s ease, color 0.5s ease, border-color 0.4s ease;
+}
+.glass:hover::before,
+.glass-card:hover::before,
+.feature-card:hover::before,
+.product-card:hover::before,
+.team-card:hover::before,
+.contact-card:hover::before {
+  left: 150%;
+}
+
+
+/* Core Hyper-Realistic Glass Definition */
+.glass,
+.glass-card,
+#chat-widget .glass,
+.feature-card, 
+.product-card, 
+.team-card, 
+.contact-card,
+.form-input {
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.03) 0%, 
+    rgba(255, 255, 255, 0.01) 100%
+  ) !important;
+  backdrop-filter: blur(24px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(140%) !important;
+  
+  /* Dual-layer light reflections on edges */
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  
+  /* Specular reflection inside the glass & deep premium drop shadows */
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0px rgba(0, 0, 0, 0.4),
+    0 4px 24px -1px rgba(0, 0, 0, 0.3),
+    0 12px 40px -4px rgba(0, 0, 0, 0.4) !important;
+  
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+  /*position: relative;
+  overflow: hidden;*/
+}
+
+
+/* Glossy highlight sheen sweep across cards on hover */
+.glass::before,
+.glass-card::before,
+.feature-card::before,
+.product-card::before,
+.team-card::before,
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.06),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+/* Hover Interaction: Intensifies shine, depth, and structural color accents */
+.glass:hover,
+.glass-card:hover,
+.feature-card:hover,
+.product-card:hover,
+.team-card:hover,
+.contact-card:hover {
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.06) 0%, 
+    rgba(255, 255, 255, 0.02) 100%
+  ) !important;
+  border-color: rgba(200, 169, 110, 0.35) !important; /* Subtle glow of your theme's ember accent */
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    0 12px 36px -2px rgba(0, 0, 0, 0.45),
+    0 20px 60px -10px rgba(200, 169, 110, 0.15) !important; /* Elegant under-glow matching branding */
+  transform: translateY(-4px);
+}
+
+/* Specific Section Class Binding Targets (Ensuring Features, Products, Team, Contact match perfectly) */
+#features .grid > div,
+#products .grid > div,
+#team .grid > div,
+#contact form,
+#contact .grid > div {
+  @extend .glass-card; /* Tailwind/PostCSS integration or manual backup fallback below */
+}
+
+/* Explicit fallback mapping variables to maintain design system styling rules */
+.feature-card, .product-card, .team-card, .contact-card {
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+/* ──────────────────────────────────────
+   LIGHT MODE TRANSLUCENT GLASS CORRECTION
+   Ensures crystal transparency when light mode toggle runs
+────────────────────────────────────── */
+.light .glass,
+.light .glass-card,
+.light .feature-card,
+.light .product-card,
+.light .team-card,
+.light .contact-card,
+.light .form-input {
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.45) 0%, 
+    rgba(255, 255, 255, 0.2) 100%
+  ) !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    0 4px 20px rgba(0, 0, 0, 0.05),
+    0 10px 30px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light .glass:hover,
+.light .glass-card:hover,
+.light .feature-card:hover,
+.light .product-card:hover,
+.light .team-card:hover,
+.light .contact-card:hover {
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.55) 0%, 
+    rgba(255, 255, 255, 0.3) 100%
+  ) !important;
+  border-color: rgba(200, 169, 110, 0.5) !important;
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    0 12px 30px rgba(200, 169, 110, 0.1) !important;
 }
 
 /* ──────────────────────────────────────
@@ -122,38 +262,55 @@ body::before {
 
 /* Base glass — used for navbar, mobile menu, small chips */
 .glass {
-  background: var(--lg-bg);
-  backdrop-filter: blur(var(--lg-blur)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(180%);
-  border: 1px solid var(--lg-border);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(40px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(1.08);
+  border: 1px solid rgba(200,169,110,0.30);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    inset 0 -1px 0 rgba(0,0,0,0.10),
+    0 8px 24px rgba(0,0,0,0.35);
   transition: var(--theme-transition);
 }
 
 /* Glass card — main UI cards */
 .glass-card {
   background: var(--lg-card-bg);
-  backdrop-filter: blur(var(--lg-blur)) saturate(160%);
-  -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(160%);
+  backdrop-filter: blur(var(--lg-blur)) saturate(200%) brightness(1.05);
+  -webkit-backdrop-filter: blur(var(--lg-blur)) saturate(200%) brightness(1.05);
   border: 1px solid var(--lg-card-border);
   position: relative;
   transition: all 0.45s cubic-bezier(0.23,1,0.32,1),
               background 0.5s ease, border-color 0.4s ease;
-  /* Inner top-edge highlight — key to "liquid glass" feel */
   box-shadow:
     inset 0 1px 0 var(--lg-card-highlight),
-    inset 0 -1px 0 rgba(0,0,0,0.08),
-    0 8px 32px var(--lg-shadow);
+    inset 0 -1px 0 rgba(0,0,0,0.12),
+    inset 1px 0 0 rgba(255,255,255,0.06),
+    0 8px 32px var(--lg-shadow),
+    0 2px 8px rgba(200,169,110,0.06);
 }
 
 .glass-card::before {
-  /* Subtle specular sheen at the top */
+  /* Specular sheen at the top — brighter for glass effect */
   content: '';
   position: absolute;
-  top: 0; left: 8%; right: 8%;
+  top: 0; left: 5%; right: 5%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--lg-highlight) 40%, var(--lg-highlight) 60%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5) 30%, rgba(255,255,255,0.5) 70%, transparent);
   border-radius: 0 0 50% 50%;
   pointer-events: none;
+  z-index: 1;
+}
+
+/* Inner left-edge highlight for depth */
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: 5%; bottom: 5%; left: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .glass-card:hover {
@@ -161,19 +318,22 @@ body::before {
   border-color: var(--lg-hover-border);
   transform: translateY(-5px);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.12),
-    0 24px 60px rgba(200,169,110,0.12),
-    0 4px 16px rgba(0,0,0,0.25);
+    inset 0 1px 0 rgba(255,255,255,0.20),
+    inset 1px 0 0 rgba(255,255,255,0.10),
+    0 28px 70px rgba(200,169,110,0.18),
+    0 4px 20px rgba(0,0,0,0.35),
+    0 0 0 1px rgba(200,169,110,0.15);
 }
 
 /* Glow variant for featured card */
 .glow-ember {
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.1),
-    0 0 0 1px rgba(200,169,110,0.22),
-    0 0 50px rgba(200,169,110,0.18),
-    0 0 100px rgba(200,169,110,0.06),
-    0 12px 40px rgba(0,0,0,0.4);
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 1px 0 0 rgba(255,255,255,0.08),
+    0 0 0 1px rgba(200,169,110,0.35),
+    0 0 60px rgba(200,169,110,0.25),
+    0 0 120px rgba(200,169,110,0.10),
+    0 12px 40px rgba(0,0,0,0.45);
 }
 
 /* ──────────────────────────────────────
@@ -242,13 +402,17 @@ html.light #theme-icon-light { opacity: 1; }
 #navbar {
   transition: all 0.45s ease;
   background: var(--nav-bg);
+
 }
 #navbar.scrolled {
-  background: var(--nav-scrolled-bg);
-  backdrop-filter: blur(32px) saturate(180%);
-  -webkit-backdrop-filter: blur(32px) saturate(180%);
-  border-bottom: 1px solid var(--nav-scrolled-border);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.25), inset 0 -1px 0 rgba(255,255,255,0.04);
+  background: rgba(7,7,13,0.60);
+  backdrop-filter: blur(60px) saturate(200%) brightness(1.1);
+  -webkit-backdrop-filter: blur(60px) saturate(200%) brightness(1.1);
+  border-bottom: 1px solid rgba(200,169,110,0.25);
+  box-shadow:
+    0 4px 32px rgba(0,0,0,0.35),
+    inset 0 -1px 0 rgba(255,255,255,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
 /* Mobile menu */
@@ -410,17 +574,23 @@ html.light .watch-glow {
 .icon-ring {
   width: 52px; height: 52px;
   border-radius: 50%;
-  border: 1px solid rgba(200,169,110,0.22);
+  border: 1px solid rgba(200,169,110,0.35);
   display: flex; align-items: center; justify-content: center;
-  background: rgba(200,169,110,0.055);
+  background: rgba(200,169,110,0.08);
   transition: all 0.35s ease;
-  /* mini liquid glass */
-  backdrop-filter: blur(8px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.07);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.16),
+    0 4px 12px rgba(0,0,0,0.25),
+    0 0 20px rgba(200,169,110,0.08);
 }
 .glass-card:hover .icon-ring {
-  border-color: rgba(200,169,110,0.55);
-  background: rgba(200,169,110,0.1);
+  border-color: rgba(200,169,110,0.65);
+  background: rgba(200,169,110,0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 4px 16px rgba(200,169,110,0.2);
 }
 
 /* ──────────────────────────────────────
@@ -455,8 +625,8 @@ html.light .watch-glow {
    FORM INPUTS
 ────────────────────────────────────── */
 .form-input {
-  background: var(--form-bg);
-  border: 1px solid var(--form-border);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(200,169,110,0.28);
   color: var(--form-color);
   font-family: 'Outfit', sans-serif;
   font-size: 0.9rem;
@@ -464,16 +634,20 @@ html.light .watch-glow {
   border-radius: 4px;
   outline: none;
   width: 100%;
-  backdrop-filter: blur(10px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    inset 0 -1px 0 rgba(0,0,0,0.08);
 }
 .form-input::placeholder { color: var(--mist); }
 .form-input:focus {
-  border-color: rgba(200,169,110,0.55);
-  background: rgba(200,169,110,0.04);
+  border-color: rgba(200,169,110,0.65);
+  background: rgba(200,169,110,0.07);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.06),
-    0 0 0 3px rgba(200,169,110,0.07);
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    0 0 0 3px rgba(200,169,110,0.12),
+    0 4px 16px rgba(200,169,110,0.08);
 }
 
 /* ──────────────────────────────────────
@@ -493,15 +667,17 @@ html.light .watch-glow {
   display: none;
   flex-direction: column;
   overflow: hidden;
-  /* True liquid glass chat window */
-  background: rgba(10,10,20,0.82);
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid rgba(200,169,110,0.22);
+  /* Enhanced liquid glass chat window */
+  background: rgba(10,10,20,0.65);
+  backdrop-filter: blur(60px) saturate(220%) brightness(1.12);
+  -webkit-backdrop-filter: blur(60px) saturate(220%) brightness(1.12);
+  border: 1px solid rgba(200,169,110,0.32);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    inset 1px 0 0 rgba(255,255,255,0.06),
     0 32px 80px rgba(0,0,0,0.65),
-    0 0 40px rgba(200,169,110,0.08);
+    0 0 0 1px rgba(200,169,110,0.08),
+    0 0 60px rgba(200,169,110,0.10);
   animation: fadeUp 0.32s cubic-bezier(0.23,1,0.32,1) forwards;
 }
 #chat-window.open { display: flex; }
@@ -770,11 +946,14 @@ section { padding-top: clamp(4rem, 8vw, 7rem); padding-bottom: clamp(4rem, 8vw, 
    MARQUEE STRIP
 ────────────────────────────────────── */
 .marquee-strip {
-  background: var(--marquee-bg);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(200,169,110,0.1);
-  border-bottom: 1px solid rgba(200,169,110,0.1);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+  background: rgba(20,20,30,0.55);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border-top: 1px solid rgba(200,169,110,0.20);
+  border-bottom: 1px solid rgba(200,169,110,0.20);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    inset 0 -1px 0 rgba(255,255,255,0.03);
 }
 
 
@@ -946,4 +1125,110 @@ html.light .watch-glow[src] {
 
 @media (min-width: 1024px) {
   .product-img-wrap { height: 240px; }
+}
+
+/* ══════════════════════════════════════════
+   GLASSMORPHISM ENHANCEMENTS — Extra Polish
+══════════════════════════════════════════ */
+
+/* Section backgrounds get a subtle frosted panel feel */
+#features .glass-card,
+#product  .glass-card,
+#contact  .glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.09) 0%,
+    rgba(200,169,110,0.04) 40%,
+    rgba(255,255,255,0.03) 100%
+  );
+}
+
+/* Features sticky panel — glass panel style */
+#features .lg\:sticky {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(200,169,110,0.02) 100%);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(200,169,110,0.16);
+  padding: 2rem;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* Feature "Intelligence Engine" highlight card — more glow */
+.glass-card.glow-ember::before {
+  background: linear-gradient(90deg, transparent, rgba(200,169,110,0.4) 30%, rgba(255,245,200,0.5) 50%, rgba(200,169,110,0.4) 70%, transparent);
+}
+
+/* Bot chat messages — enhanced glass */
+.chat-msg.bot {
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(200,169,110,0.22);
+  color: var(--fog);
+  border-bottom-left-radius: 3px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    0 2px 8px rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Floating hero badges — enhanced glass */
+#hero .glass {
+  background: rgba(10,10,20,0.45);
+  backdrop-filter: blur(40px) saturate(200%) brightness(1.15);
+  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(1.15);
+  border: 1px solid rgba(200,169,110,0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 8px 24px rgba(0,0,0,0.45),
+    0 0 24px rgba(200,169,110,0.08);
+}
+
+/* Team card photo overlay — glass tint at bottom */
+.team-photo-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(7, 7, 13, 0.92) 0%,
+    rgba(10, 10, 22, 0.50) 35%,
+    transparent 100%
+  );
+}
+
+/* Product badge "BESTSELLER" glass pill */
+.glass-card span[class*="bg-ember"],
+.glass-card span[class*="bg-gold"] {
+  backdrop-filter: blur(8px);
+}
+
+/* Footer social icon glass buttons — richer */
+footer .glass.rounded-full {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(200,169,110,0.25);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+  transition: all 0.3s ease;
+}
+footer .glass.rounded-full:hover {
+  background: rgba(200,169,110,0.12);
+  border-color: rgba(200,169,110,0.5);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 4px 14px rgba(200,169,110,0.2);
+}
+
+/* Light mode — keep glass feel but lighter */
+html.light .glass-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.88) 0%, rgba(255,250,240,0.78) 100%) !important;
+  backdrop-filter: blur(40px) saturate(200%) brightness(1.02) !important;
+  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(1.02) !important;
+  border-color: rgba(168,120,42,0.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.98),
+    inset 1px 0 0 rgba(255,255,255,0.6),
+    0 4px 24px rgba(0,0,0,0.07) !important;
+}
+html.light #features .lg\:sticky {
+  background: rgba(255,255,255,0.75);
+  border-color: rgba(168,120,42,0.18);
+}
+html.light .chat-msg.bot {
+  background: rgba(255,255,255,0.82);
+  backdrop-filter: blur(12px);
 }
